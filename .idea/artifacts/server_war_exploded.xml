@@ -1,0 +1,31 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="server:war exploded">
+    <output-path>$PROJECT_DIR$/server/target/server</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>server</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="server" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="server-api-1.0.jar">
+            <element id="module-output" name="server-api" />
+          </element>
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:6.2" />
+          <element id="library" level="project" name="Maven: javax.ejb:javax.ejb-api:3.2.2" />
+          <element id="library" level="project" name="Maven: javax.transaction:javax.transaction-api:1.3" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/server/target/server/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="server/web/Web" />
+    </root>
+  </artifact>
+</component>
