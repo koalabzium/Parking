@@ -24,6 +24,8 @@ public class ParkingLotManager {
     @EJB(lookup = "java:global/server/DatabaseController")
     private DatabaseControllerInterface databaseController;
 
+
+
 //    private SOAPPublisherClient soapPublisherClient;
     private PersonService ps;
 
@@ -63,9 +65,9 @@ public class ParkingLotManager {
         //We need to pass interface and model beans to client
         ps = service.getPort(PersonService.class);
 
+        System.out.println(ps);
         Person p1 = new Person(); p1.setName("Pankaj"); p1.setId(1); p1.setAge(30);
         System.out.println(ps.addPerson(p1));
-//        databaseController.setLotAsTaken(lotId);
 
     }
 
@@ -84,8 +86,6 @@ public class ParkingLotManager {
         ps = service.getPort(PersonService.class);
         Person p1 = new Person(); p1.setName("Pankaj"); p1.setId(1); p1.setAge(30);
         System.out.println(ps.addPerson(p1));
-//        ps.setLotAsFree(lotId);
-//        databaseController.setLotAsFree(lotId);
 
     }
 }

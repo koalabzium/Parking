@@ -15,7 +15,6 @@ public class SOAPPublisherClient {
     private PersonService ps;
 
     public SOAPPublisherClient() throws MalformedURLException {
-        SOAPPublisher soapPublisher = new SOAPPublisher();
 //        soapPublisher.publish();
 //        System.out.println("PUBLISHED");
         URL wsdlURL = new URL("http://localhost:1238/ws/person?wsdl");
