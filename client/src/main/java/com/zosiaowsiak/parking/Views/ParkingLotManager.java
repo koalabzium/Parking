@@ -1,7 +1,7 @@
 package com.zosiaowsiak.parking.Views;
 
 import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
-import com.zosiaowsiak.parking.Soap.PersonService;
+import com.zosiaowsiak.parking.Soap.LotSoapServiceInterface;
 //import com.zosiaowsiak.parking.Views.zosiaowsiak.SOAPPublisherClient;
 
 import javax.ejb.EJB;
@@ -10,7 +10,6 @@ import javax.faces.bean.RequestScoped;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 @ManagedBean
@@ -24,7 +23,7 @@ public class ParkingLotManager {
 
 
 //    private SOAPPublisherClient soapPublisherClient;
-    private PersonService ps;
+    private LotSoapServiceInterface ps;
 
 //    public ParkingLotManager() throws MalformedURLException {
 //        soapPublisherClient = new SOAPPublisherClient();
@@ -54,7 +53,7 @@ public class ParkingLotManager {
         URL wsdlURL = new URL("http://localhost:5555/ws/person?wsdl");
         QName qname = new QName("http://Soap.parking.zosiaowsiak.com/", "LotSoapServiceService");
         Service service = Service.create(wsdlURL, qname);
-        ps = service.getPort(PersonService.class);
+        ps = service.getPort(LotSoapServiceInterface.class);
         boolean x = ps.setLotAsTaken(lotId);
         System.out.println(x);
 
@@ -69,7 +68,7 @@ public class ParkingLotManager {
 
         Service service = Service.create(wsdlURL, qname);
 
-        ps = service.getPort(PersonService.class);
+        ps = service.getPort(LotSoapServiceInterface.class);
         System.out.println(ps.setLotAsFree(lotId));
 
     }

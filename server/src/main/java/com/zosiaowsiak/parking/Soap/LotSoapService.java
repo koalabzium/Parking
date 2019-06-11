@@ -1,27 +1,17 @@
 package com.zosiaowsiak.parking.Soap;
 
-import com.zosiaowsiak.parking.Database.DatabaseController;
-import com.zosiaowsiak.parking.Database.ParkingLotDAO;
-import com.zosiaowsiak.parking.Models.Person;
-import org.hibernate.dialect.Database;
 import org.json.JSONObject;
 
 import javax.jws.WebService;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 
-@WebService(endpointInterface = "com.zosiaowsiak.parking.Soap.PersonService")
-public class LotSoapService implements PersonService {
+@WebService(endpointInterface = "com.zosiaowsiak.parking.Soap.LotSoapServiceInterface")
+public class LotSoapService implements LotSoapServiceInterface {
+
+
 
 
     @Override

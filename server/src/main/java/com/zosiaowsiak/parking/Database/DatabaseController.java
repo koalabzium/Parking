@@ -3,6 +3,7 @@ package com.zosiaowsiak.parking.Database;
 import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
 import com.zosiaowsiak.parking.Models.Employee;
 import com.zosiaowsiak.parking.Models.ParkingLot;
+import com.zosiaowsiak.parking.Models.Ticket;
 
 import javax.ejb.Remote;
 import javax.ejb.Singleton;
@@ -16,6 +17,7 @@ public class DatabaseController implements DatabaseControllerInterface {
 
     private ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
     private EmployeeDAO employeeDAO = new EmployeeDAO();
+    private TicketDAO ticketDAO = new TicketDAO();
 
     @Override
     public List<Employee> getEmployees(){
@@ -48,6 +50,26 @@ public class DatabaseController implements DatabaseControllerInterface {
     public void setLotAsFree(Integer lotId) {
         System.out.println("USTAWIAM NA FREE MIEJSCE " + lotId);
         parkingLotDAO.setLotAsFree(lotId);
+    }
+
+    @Override
+    public Employee getEmployeeByName(String name) {
+        return employeeDAO.getEmployeeByName(name);
+    }
+
+    @Override
+    public List<ParkingLot> getLotsByArea(Integer area) {
+        return parkingLotDAO.getLotsByArea(area);
+    }
+
+    @Override
+    public List<Ticket> getAllTickets() {
+        return ticketDAO.getAll();
+    }
+
+    @Override
+    public List<Ticket> getTicketsByArea(Integer area) {
+        return ticketDAO.getTicketsByArea();
     }
 
     public String hashPassword(String password){

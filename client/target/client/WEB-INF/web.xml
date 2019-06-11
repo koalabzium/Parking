@@ -22,11 +22,10 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Logged</web-resource-name>
-            <url-pattern>/logged/hello.xhtml</url-pattern>
+            <url-pattern>/logged/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>0</role-name>
-            <role-name>1</role-name>
+            <role-name>*</role-name>
         </auth-constraint>
     </security-constraint>
 
@@ -44,6 +43,9 @@
     </security-role>
     <security-role>
         <role-name>0</role-name>
+    </security-role>
+    <security-role>
+        <role-name>*</role-name>
     </security-role>
 
 

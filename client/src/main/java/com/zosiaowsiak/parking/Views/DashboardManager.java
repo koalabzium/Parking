@@ -4,12 +4,16 @@ package com.zosiaowsiak.parking.Views;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
+import com.zosiaowsiak.parking.Models.Employee;
 import com.zosiaowsiak.parking.Models.ParkingLot;
+import com.zosiaowsiak.parking.Models.Ticket;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.List;
 
 @Named("dashboardManager")
@@ -22,11 +26,33 @@ public class DashboardManager implements Serializable {
     @EJB(lookup = "java:global/server/DatabaseController")
     private DatabaseControllerInterface databaseController;
 
+    /* TODO
+ 2. Pracownik strefy ma dostęp do danych dotyczący tylko jego strefy, admin ma dostęp do
+wszystkiego i widzi całość danych.
+3. Wszyscy użytkownicy mają korzystać z tych samych stron JSF, rozróżnienie ról ma odbywać się w
+metodach EJB.
+4. Użytkownik powinien mieć możliwość zmiany swojego hasła, natomiast administrator powinien
+być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być trzymane jako plain text.
+     */
+
+    public String getLoggedName(){
+        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+        return principal.getName();
+    }
+
     public List<ParkingLot> getLots(){
 
-        //TODO tutaj kiedyś powinno się te miejsca ze względu na zalogowaną rozróżniać
-
-        return databaseController.getLots();
+        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+        String name = principal.getName();
+        Employee employee = databaseController.getEmployeeByName(name);
+        boolean isAdmin = employee.getIsadmin();
+        System.out.println(employee.getLogin() + " JEST ADMINEM? " + isAdmin);
+        if(isAdmin){
+            return databaseController.getLots();
+        }
+        else{
+            return databaseController.getLotsByArea(employee.getArea());
+        }
     }
 
     public void addEmployee(){
@@ -34,6 +60,23 @@ public class DashboardManager implements Serializable {
         databaseController.addEmployee(newUserLogin, newUserPass, newUserArea);
     }
 
+    public Integer ticketsCount(){
+        List<Ticket> tickets = databaseController.getAllTickets();
+        return tickets.size();
+    }
+
+    public Integer getTicketsCount(){
+        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+        String name = principal.getName();
+        Employee employee = databaseController.getEmployeeByName(name);
+        boolean isAdmin = employee.getIsadmin();
+        if(isAdmin){
+            return databaseController.getAllTickets().size();
+        }
+        else{
+            return databaseController.getTicketsByArea(employee.getArea()).size();
+        }
+    }
 
     public String getNewUserLogin() {
         return newUserLogin;

@@ -62,4 +62,14 @@ public class ParkingLotDAO {
     }
 
 
+    public List<ParkingLot> getLotsByArea(Integer area) {
+        List<ParkingLot> parkingLots = getAllLots();
+        List<ParkingLot> lotsByArea = new ArrayList<>();
+        for(ParkingLot pl : parkingLots){
+            if(pl.getArea().equals(area)){
+                lotsByArea.add(pl);
+            }
+        }
+        return lotsByArea;
+    }
 }

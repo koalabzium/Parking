@@ -2,10 +2,14 @@ package com.zosiaowsiak.parking.Database;
 
 
 import com.zosiaowsiak.parking.Models.Ticket;
+import com.zosiaowsiak.parking.Models.Ticket;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TicketDAO {
 
@@ -26,4 +30,23 @@ public class TicketDAO {
 
     }
 
+    public List<Ticket> getAll() {
+        List<Ticket> result = new ArrayList<Ticket>();
+
+
+        try{
+            TypedQuery<Ticket> q = em.createQuery("SELECT e FROM Ticket e", Ticket.class);
+            result = q.getResultList();
+        }catch (Exception e){
+            System.err.println("Error while retrieving data: " + e);
+        }
+        return result;
+    }
+
+    public List<Ticket> getTicketsByArea() {
+        List<Ticket> tickets = getAll();
+        List<Ticket> ticketsByArea = new ArrayList<>();
+
+        return null;
+    }
 }

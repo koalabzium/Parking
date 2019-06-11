@@ -8,7 +8,7 @@
 <h:head><title>Dashboard</title></h:head>
 <h:body>
 
-    <h1>Wow, jesteś zalogowana</h1> <br/><br/><br/>
+    <h1>Super Cię widzieć #{dashboardManager.loggedName}</h1> <br/><br/><br/>
 
   
     <h:form id="table">
@@ -18,6 +18,10 @@
             <h:column>
                 <f:facet name="header">Id</f:facet>
                 #{b.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Area?</f:facet>
+                #{b.area}
             </h:column>
             <h:column>
                 <f:facet name="header">Occupied?</f:facet>
