@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -47,7 +48,7 @@ public class ParkingLotManager {
 //        PersonService ps = service.getPort(PersonService.class);
 //    }
 
-    public void takeParkingLot(String parkingLotId) throws MalformedURLException {
+    public void takeParkingLot(String parkingLotId) throws IOException {
         Integer lotId = Integer.parseInt(parkingLotId);
         System.out.println("ŁĄCZĘ Z PS.SETLOTASTAKEN");
         URL wsdlURL = new URL("http://localhost:5555/ws/person?wsdl");
@@ -59,7 +60,7 @@ public class ParkingLotManager {
 
     }
 
-    public void freeParkingLot(String parkingLotId) throws MalformedURLException {
+    public void freeParkingLot(String parkingLotId) throws IOException {
         Integer lotId = Integer.parseInt(parkingLotId);
         System.out.println("ŁĄCZĘ Z PS.SETLOTASFREE");
         URL wsdlURL = new URL("http://localhost:5555/ws/person?wsdl");

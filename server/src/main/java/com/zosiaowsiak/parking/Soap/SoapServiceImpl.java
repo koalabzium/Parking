@@ -14,6 +14,8 @@ import javax.jws.WebService;
 //@WebService(endpointInterface = "com.zosiaowsiak.parking.Soap.SoapService")
 public class SoapServiceImpl implements SoapService{
 
+
+
     @Override
     public void freeLot(Integer lotId) {
         ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
