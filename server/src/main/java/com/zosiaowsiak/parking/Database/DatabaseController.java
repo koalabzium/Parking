@@ -6,6 +6,8 @@ import com.zosiaowsiak.parking.Models.ParkingLot;
 
 import javax.ejb.Remote;
 import javax.ejb.Singleton;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @Singleton
@@ -17,12 +19,56 @@ public class DatabaseController implements DatabaseControllerInterface {
 
     @Override
     public List<Employee> getEmployees(){
-        return employeeDAO.getAllEmployees();
+        return employeeDAO.getAll();
     }
 
     @Override
     public List<ParkingLot> getLots(){
         return parkingLotDAO.getAllLots();
+    }
+
+    @Override
+    public void addEmployee(String newUserLogin, String newUserPass, Integer newUserArea) {
+
+        Employee employee = new Employee();
+        employee.setArea(newUserArea);
+        employee.setIsadmin(false);
+        employee.setLogin(newUserLogin);
+        employee.setPass(newUserPass);
+        employeeDAO.add(employee);
+    }
+
+    @Override
+    public void setLotAsTaken(Integer lotId) {
+        System.out.println("USTAWIAM NA TAKEN MIEJSCE " + lotId);
+        parkingLotDAO.serLotAsTaken(lotId);
+    }
+
+    @Override
+    public void setLotAsFree(Integer lotId) {
+        System.out.println("USTAWIAM NA FREE MIEJSCE " + lotId);
+        parkingLotDAO.setLotAsFree(lotId);
+    }
+
+    public String hashPassword(String password){
+        String generatedPassword = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA");
+            md.update(password.getBytes());
+            byte[] bytes = md.digest();
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println("HASŁO: " + generatedPassword);
+        return generatedPassword;
     }
 
 }

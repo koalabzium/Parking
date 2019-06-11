@@ -14,6 +14,41 @@ public class ParkingLotDAO {
     private EntityManagerFactory factory= Persistence.createEntityManagerFactory("org.hibernate.tutorial.jpa");
     private EntityManager em = factory.createEntityManager();
 
+
+    public void setLotAsFree(Integer lotId) {
+        try{
+
+            ParkingLot foundLot = em.find(ParkingLot.class, lotId);
+            if(!em.getTransaction().isActive()) em.getTransaction().begin();
+            foundLot.setIsoccupied(false);
+            em.getTransaction().commit();
+            System.out.println("Updated to free lot nr: " + lotId);
+
+        }catch(Exception e){
+
+            em.getTransaction().rollback();
+            System.err.println("Error when trying to update data in database: " + e);
+
+        }
+    }
+
+    public void serLotAsTaken(Integer lotId) {
+        try{
+
+            ParkingLot foundLot = em.find(ParkingLot.class, lotId);
+            if(!em.getTransaction().isActive()) em.getTransaction().begin();
+            foundLot.setIsoccupied(true);
+            em.getTransaction().commit();
+            System.out.println("Updated to occupied lot nr: " + lotId);
+
+        }catch(Exception e){
+
+            em.getTransaction().rollback();
+            System.err.println("Error when trying to update data in database: " + e);
+
+        }
+    }
+
     public List<ParkingLot> getAllLots(){
         List<ParkingLot> result = new ArrayList<ParkingLot>();
 
@@ -26,5 +61,6 @@ public class ParkingLotDAO {
         }
         return result;
     }
+
 
 }

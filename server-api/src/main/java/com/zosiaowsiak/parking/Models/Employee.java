@@ -1,12 +1,11 @@
 package com.zosiaowsiak.parking.Models;
-//
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
-//@Entity
+@Entity
 public class Employee implements Serializable {
     private int id;
     private String login;
@@ -14,7 +13,19 @@ public class Employee implements Serializable {
     private Boolean isadmin;
     private Integer area;
 
+    public Employee() {
+    }
+
+    public Employee(String login, String pass, Boolean isadmin, Integer area) {
+        this.login = login;
+        this.pass = pass;
+        this.isadmin = isadmin;
+        this.area = area;
+    }
+
     @Id
+    @GeneratedValue(generator = "incrementator")
+    @GenericGenerator(name="incrementator", strategy = "increment")
     @Column(name = "id")
     public int getId() {
         return id;

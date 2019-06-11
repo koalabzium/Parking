@@ -8,6 +8,7 @@
         <jta-data-source>java:/PostgresDS</jta-data-source>
         <class>com.zosiaowsiak.parking.Models.ParkingLot</class>
         <class>com.zosiaowsiak.parking.Models.Employee</class>
+        <class>com.zosiaowsiak.parking.Models.Ticket</class>
 
         <properties>
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/postgres"/>
