@@ -4,7 +4,6 @@ import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
 import com.zosiaowsiak.parking.Models.Person;
 import com.zosiaowsiak.parking.Soap.PersonService;
 import com.zosiaowsiak.parking.Soap.SoapService;
-import com.zosiaowsiak.parking.Views.zosiaowsiak.SOAPPublisher;
 //import com.zosiaowsiak.parking.Views.zosiaowsiak.SOAPPublisherClient;
 
 import javax.ejb.EJB;
@@ -54,11 +53,11 @@ public class ParkingLotManager {
     public void takeParkingLot(String parkingLotId) throws MalformedURLException {
         Integer lotId = Integer.parseInt(parkingLotId);
         System.out.println("ŁĄCZĘ Z PS.SETLOTASTAKEN");
-        URL wsdlURL = new URL("http://localhost:1222/ws/person?wsdl");
+        URL wsdlURL = new URL("http://localhost:5555/ws/person?wsdl");
         //check above URL in browser, you should see WSDL file
 
         //creating QName using targetNamespace and name
-        QName qname = new QName("http://zosiaowsiak.Views.parking.zosiaowsiak.com/", "PersonServiceImplService");
+        QName qname = new QName("http://Soap.parking.zosiaowsiak.com/", "PersonServiceImplService");
 
         Service service = Service.create(wsdlURL, qname);
 
@@ -74,11 +73,11 @@ public class ParkingLotManager {
     public void freeParkingLot(String parkingLotId) throws MalformedURLException {
         Integer lotId = Integer.parseInt(parkingLotId);
         System.out.println("ŁĄCZĘ Z PS.SETLOTASFREE");
-        URL wsdlURL = new URL("http://localhost:1222/ws/person?wsdl");
+        URL wsdlURL = new URL("http://localhost:5555/ws/person?wsdl");
         //check above URL in browser, you should see WSDL file
 
         //creating QName using targetNamespace and name
-        QName qname = new QName("http://zosiaowsiak.Views.parking.zosiaowsiak.com/", "PersonServiceImplService");
+        QName qname = new QName("http://Soap.parking.zosiaowsiak.com/", "PersonServiceImplService");
 
         Service service = Service.create(wsdlURL, qname);
 

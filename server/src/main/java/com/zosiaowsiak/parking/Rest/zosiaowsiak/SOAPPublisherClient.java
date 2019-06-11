@@ -1,13 +1,11 @@
-package com.zosiaowsiak.parking.Views.zosiaowsiak;
+package com.zosiaowsiak.parking.Rest.zosiaowsiak;
 
-import com.zosiaowsiak.parking.Models.Person;
 import com.zosiaowsiak.parking.Soap.PersonService;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
 
 
 public class SOAPPublisherClient {

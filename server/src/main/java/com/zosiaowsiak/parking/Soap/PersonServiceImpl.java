@@ -1,13 +1,11 @@
-package com.zosiaowsiak.parking.Views.zosiaowsiak;
+package com.zosiaowsiak.parking.Soap;
 
 import com.zosiaowsiak.parking.Models.Person;
-import com.zosiaowsiak.parking.Soap.PersonService;
 
+import javax.jws.WebService;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import javax.jws.WebService;
 
 
 @WebService(endpointInterface = "com.zosiaowsiak.parking.Soap.PersonService")
