@@ -13,20 +13,9 @@ import java.net.MalformedURLException;
 public interface PersonService {
 
     @WebMethod
-    public boolean addPerson(Person p);
+    public boolean setLotAsTaken(Integer lotId);
 
     @WebMethod
-    public boolean deletePerson(int id);
+    public boolean setLotAsFree(Integer id);
 
-    @WebMethod
-    public Person getPerson(int id);
-
-    @WebMethod
-    public Person[] getAllPersons();
-//
-//    @WebMethod
-//    void setLotAsTaken(Integer lotId) throws MalformedURLException;
-//
-//    @WebMethod
-//    void setLotAsFree(Integer lotId) throws MalformedURLException;
 }

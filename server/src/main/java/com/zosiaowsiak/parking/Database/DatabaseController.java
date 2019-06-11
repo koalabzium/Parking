@@ -41,7 +41,7 @@ public class DatabaseController implements DatabaseControllerInterface {
     @Override
     public void setLotAsTaken(Integer lotId) {
         System.out.println("USTAWIAM NA TAKEN MIEJSCE " + lotId);
-        parkingLotDAO.serLotAsTaken(lotId);
+        parkingLotDAO.setLotAsTaken(lotId);
     }
 
     @Override

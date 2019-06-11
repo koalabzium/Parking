@@ -32,9 +32,8 @@ public class ParkingLotDAO {
         }
     }
 
-    public void serLotAsTaken(Integer lotId) {
+    public void setLotAsTaken(Integer lotId) {
         try{
-
             ParkingLot foundLot = em.find(ParkingLot.class, lotId);
             if(!em.getTransaction().isActive()) em.getTransaction().begin();
             foundLot.setIsoccupied(true);

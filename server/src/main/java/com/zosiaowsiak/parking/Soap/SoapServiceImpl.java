@@ -23,6 +23,6 @@ public class SoapServiceImpl implements SoapService{
     @Override
     public void takeLot(Integer lotId) {
         ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
-        parkingLotDAO.serLotAsTaken(lotId);
+        parkingLotDAO.setLotAsTaken(lotId);
     }
 }
