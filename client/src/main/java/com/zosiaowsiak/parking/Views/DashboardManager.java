@@ -65,16 +65,17 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
         return tickets.size();
     }
 
-    public Integer getTicketsCount(){
+
+    public List<Ticket> getTickets() {
         Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
         String name = principal.getName();
         Employee employee = databaseController.getEmployeeByName(name);
         boolean isAdmin = employee.getIsadmin();
         if(isAdmin){
-            return databaseController.getAllTickets().size();
+            return databaseController.getAllTickets();
         }
         else{
-            return databaseController.getTicketsByArea(employee.getArea()).size();
+            return databaseController.getTicketsByArea(employee.getArea());
         }
     }
 
@@ -101,4 +102,6 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
     public void setNewUserArea(Integer newUserArea) {
         this.newUserArea = newUserArea;
     }
+
+
 }

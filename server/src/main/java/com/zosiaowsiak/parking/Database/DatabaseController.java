@@ -69,7 +69,7 @@ public class DatabaseController implements DatabaseControllerInterface {
 
     @Override
     public List<Ticket> getTicketsByArea(Integer area) {
-        return ticketDAO.getTicketsByArea();
+        return ticketDAO.getTicketsByArea(area);
     }
 
     public String hashPassword(String password){

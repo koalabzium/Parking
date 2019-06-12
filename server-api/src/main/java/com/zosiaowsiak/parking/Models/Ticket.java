@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "tickets", schema = "public", catalog = "postgres")
@@ -13,6 +14,22 @@ public class Ticket implements Serializable {
     private Timestamp startTime;
     private Timestamp endTime;
     private Integer lotId;
+
+    public String timeLeft(){
+        Date date = new Date();
+        long currTimeMili = date.getTime();
+        long endTimeMili = endTime.getTime();
+        long diff = endTimeMili - currTimeMili;
+        long timeLeftMinutes = diff / (60 * 1000);
+        int minutesLeft = (int)timeLeftMinutes;
+        int hoursCount = 0;
+        while(minutesLeft>60){
+            hoursCount += 1;
+            minutesLeft -= 60;
+        }
+        return hoursCount + " hours, " + minutesLeft + " minutes";
+
+    }
 
     @Id
     @GeneratedValue(generator = "incrementator")
@@ -79,4 +96,5 @@ public class Ticket implements Serializable {
         result = 31 * result + (lotId != null ? lotId.hashCode() : 0);
         return result;
     }
+
 }

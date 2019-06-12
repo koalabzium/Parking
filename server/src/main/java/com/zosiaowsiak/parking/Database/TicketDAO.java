@@ -1,6 +1,7 @@
 package com.zosiaowsiak.parking.Database;
 
 
+import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
 import com.zosiaowsiak.parking.Models.Ticket;
 
@@ -43,10 +44,17 @@ public class TicketDAO {
         return result;
     }
 
-    public List<Ticket> getTicketsByArea() {
+    public List<Ticket> getTicketsByArea(Integer area) {
         List<Ticket> tickets = getAll();
         List<Ticket> ticketsByArea = new ArrayList<>();
+        ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
+        List<Integer> lotsIds = parkingLotDAO.getLotsIdByArea(area);
+        for(Ticket t: tickets){
+            if(lotsIds.contains(t.getLotId())){
+                ticketsByArea.add(t);
+            }
+        }
 
-        return null;
+        return ticketsByArea;
     }
 }

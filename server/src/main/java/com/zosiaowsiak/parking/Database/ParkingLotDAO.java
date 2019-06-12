@@ -72,4 +72,15 @@ public class ParkingLotDAO {
         }
         return lotsByArea;
     }
+
+    public List<Integer> getLotsIdByArea(Integer area) {
+        List<ParkingLot> parkingLots = getAllLots();
+        List<Integer> lotsIdByArea = new ArrayList<>();
+        for(ParkingLot pl : parkingLots){
+            if(pl.getArea().equals(area)){
+                lotsIdByArea.add(pl.getId());
+            }
+        }
+        return lotsIdByArea;
+    }
 }
