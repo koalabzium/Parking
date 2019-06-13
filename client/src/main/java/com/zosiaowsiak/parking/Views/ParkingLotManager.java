@@ -10,66 +10,63 @@ import javax.faces.bean.RequestScoped;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 @ManagedBean
 @RequestScoped
 public class ParkingLotManager {
 
-
-    @EJB(lookup = "java:global/server/DatabaseController")
-    private DatabaseControllerInterface databaseController;
-
-
-
-//    private SOAPPublisherClient soapPublisherClient;
-    private LotSoapServiceInterface ps;
-
-//    public ParkingLotManager() throws MalformedURLException {
-//        soapPublisherClient = new SOAPPublisherClient();
-//        ps = soapPublisherClient.getPs();
-//
-//    }
-
-//    public void init() throws MalformedURLException {
-//        SOAPPublisher soapPublisher = new SOAPPublisher();
-//        soapPublisher.publish();
-//        System.out.println("PUBLISHED");
-//        URL wsdlURL = new URL("http://localhost:1238/ws/person?wsdl");
-//        //check above URL in browser, you should see WSDL file
-//
-//        //creating QName using targetNamespace and name
-//        QName qname = new QName("http://zosiaowsiak.Views.parking.zosiaowsiak.com/", "PersonServiceImplService");
-//
-//        Service service = Service.create(wsdlURL, qname);
-//
-//        //We need to pass interface and model beans to client
-//        PersonService ps = service.getPort(PersonService.class);
-//    }
+    private String baseURL = "http://localhost:8080/server/SoapService?wsdl";
 
     public void takeParkingLot(String parkingLotId) throws IOException {
-        Integer lotId = Integer.parseInt(parkingLotId);
-        System.out.println("ŁĄCZĘ Z PS.SETLOTASTAKEN");
-        URL wsdlURL = new URL("http://localhost:5555/ws/person?wsdl");
-        QName qname = new QName("http://Soap.parking.zosiaowsiak.com/", "LotSoapServiceService");
-        Service service = Service.create(wsdlURL, qname);
-        ps = service.getPort(LotSoapServiceInterface.class);
-        boolean x = ps.setLotAsTaken(lotId);
-        System.out.println(x);
+        String message = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://Soap.parking.zosiaowsiak.com/\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <soap:Arrive>\n" +
+                "         <!--Optional:-->\n" +
+                "         <answer>" + parkingLotId + "</answer>\n" +
+                "      </soap:Arrive>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
 
+
+       connectAndSend(message);
     }
 
     public void freeParkingLot(String parkingLotId) throws IOException {
-        Integer lotId = Integer.parseInt(parkingLotId);
-        System.out.println("ŁĄCZĘ Z PS.SETLOTASFREE");
-        URL wsdlURL = new URL("http://localhost:5555/ws/person?wsdl");
 
-        QName qname = new QName("http://Soap.parking.zosiaowsiak.com/", "LotSoapServiceService");
+        System.out.println("ZWALNIAMY");
+        String request = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://Soap.parking.zosiaowsiak.com/\">\n" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <soap:Leave>\n" +
+                "         <!--Optional:-->\n" +
+                "         <answer>1</answer>\n" +
+                "      </soap:Leave>\n" +
+                "   </soapenv:Body>\n" +
+                "</soapenv:Envelope>";
 
-        Service service = Service.create(wsdlURL, qname);
 
-        ps = service.getPort(LotSoapServiceInterface.class);
-        System.out.println(ps.setLotAsFree(lotId));
+        connectAndSend(request);
+
+    }
+
+    public void connectAndSend(String request) throws IOException{
+        System.out.println("ŁĄCZĘĘĘ...");
+        URL url = new URL(baseURL);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("POST");
+        con.setDoOutput(true);
+        con.setRequestProperty("Content-Type", "text/plain");
+        OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream(), "UTF-8");
+        writer.write(request);
+        writer.close();
+
+        InputStream inputStream = con.getInputStream();
+        con.disconnect();
 
     }
 }

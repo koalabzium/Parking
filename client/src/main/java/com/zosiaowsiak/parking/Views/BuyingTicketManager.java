@@ -43,6 +43,8 @@ public class BuyingTicketManager {
         writer.write(json.toString());
         writer.close();
 
+        //TODO wywal to zbieranie inputu...
+
         InputStream inputStream = con.getInputStream();
         BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
         StringBuffer jsonString = new StringBuffer();
