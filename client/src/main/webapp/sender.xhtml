@@ -22,7 +22,7 @@
                      maxlength="128"
                      size="32" />
 
-        <h:commandButton value="Send Message" action="#{senderBean.sendJMSMessageToMyQueue}" />
+        <h:commandButton value="Send Message" action="#{senderBean.sendMessage}" />
         <h:commandButton value="Go to Receive Page"  action="logged/receiver" />
         <p>
             <h:outputText value="Message text bellow: "/>
