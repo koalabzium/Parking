@@ -114,7 +114,7 @@
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>jaxws-rt</artifactId>
             <version>2.1.4</version>
-        </dependency>
+        </dependency> to narzędzie, które działa z linii poleceń.Używa się go aby z kontraktu WSDL wygenerować gotowy do użycia interfejs w javie. Jest to tak z
 
         <!-- https://mvnrepository.com/artifact/javax.jms/jms -->
         <dependency>
