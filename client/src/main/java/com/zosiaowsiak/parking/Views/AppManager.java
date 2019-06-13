@@ -40,15 +40,15 @@ public class AppManager {
             JMSConsumer receiver = context.createConsumer(queue);
             String text = receiver.receiveBody(String.class, 1000);
 
-            if (text != null) {
-                FacesMessage facesMessage =
-                        new FacesMessage("Reading message: " + text);
-                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-            } else {
-                FacesMessage facesMessage =
-                        new FacesMessage("No message received after 1 second");
-                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-            }
+//            if (text != null) {
+//                FacesMessage facesMessage =
+//                        new FacesMessage("Reading message: " + text);
+//                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+//            } else {
+//                FacesMessage facesMessage =
+//                        new FacesMessage("No message received after 1 second");
+//                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+//            }
         } catch (JMSRuntimeException t) {
 
             System.out.println(t.toString());

@@ -5,6 +5,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.jms.JMSConsumer;
 import javax.jms.JMSContext;
@@ -24,6 +25,10 @@ public class ReceiverBean {
     public ReceiverBean() {
     }
 
+    public void next(AjaxBehaviorEvent ajaxBehaviorEvent) {
+        System.out.println("Próbuje odświeżyc");
+    }
+
     public void getMessage() {
         System.out.println("w receiverze jestem");
         try {
@@ -34,10 +39,12 @@ public class ReceiverBean {
                 FacesMessage facesMessage =
                         new FacesMessage("Reading message: " + text);
                 FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+//                return text;
             } else {
                 FacesMessage facesMessage =
                         new FacesMessage("No message received after 1 second");
                 FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+//                return "No messages for you";
             }
         } catch (JMSRuntimeException t) {
 

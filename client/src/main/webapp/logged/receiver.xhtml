@@ -7,11 +7,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head><title>RECEIVER</title></h:head>
 <h:body>
-    <h:form>
+    <h:form id = "msgs">
 
-        <h2>Click Receive Message to receive the messages </h2>
-        <h:commandButton id="back" value="Receive Message" action="#{receiverBean.getMessage}" />
-        <h:commandButton id="send" value="Send Another Message"  action="sender" />
+        <h2>Your less recent notification is:  </h2>
+        <h3></h3>
+
+    </h:form>
+    <h:form>
+        <h:commandButton id="send" value="Check notifications"  action="#{receiverBean.getMessage()}" />
 
         <p></p>
 
