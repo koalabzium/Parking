@@ -72,6 +72,13 @@ public class DatabaseController implements DatabaseControllerInterface {
         return ticketDAO.getTicketsByArea(area);
     }
 
+    @Override
+    public void tempSendMessage() {
+
+//        MessageSender messageSender = new MessageSender();
+//        messageSender.sendMessage("WIADOMOOOOOOOOŚĆ!!!!!!!!!");
+    }
+
     public String hashPassword(String password){
         String generatedPassword = "";
         try {

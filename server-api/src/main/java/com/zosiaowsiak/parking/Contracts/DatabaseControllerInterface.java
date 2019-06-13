@@ -23,4 +23,6 @@ public interface DatabaseControllerInterface {
     List<Ticket> getAllTickets();
 
     List<Ticket> getTicketsByArea(Integer area);
+
+    void tempSendMessage();
 }
