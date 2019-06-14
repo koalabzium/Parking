@@ -1,9 +1,8 @@
 package com.zosiaowsiak.parking.Rest;
 
-import com.zosiaowsiak.parking.Database.ParkingLotDAO;
 import com.zosiaowsiak.parking.Database.TicketDAO;
-import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
+import com.zosiaowsiak.parking.Timers.Scheduler;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -15,9 +14,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Path("/tickets")
 public class TicketService {
@@ -51,7 +48,8 @@ public class TicketService {
         TicketDAO ticketDAO = new TicketDAO();
         ticketDAO.add(ticket);
 
-        //TODO USTAW JAKOŚ EVENT CZY KOLEJKE CZY COŚ...
+        Scheduler scheduler = new Scheduler();
+        scheduler.scheduleCheckingTicket(ticket);
         return Response.ok().build();
     }
 

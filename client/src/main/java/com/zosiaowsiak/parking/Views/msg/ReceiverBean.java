@@ -1,6 +1,11 @@
 package com.zosiaowsiak.parking.Views.msg;
 
+import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
+import com.zosiaowsiak.parking.Contracts.MessageSenderInterface;
+import com.zosiaowsiak.parking.Models.Employee;
+
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -11,6 +16,7 @@ import javax.jms.JMSConsumer;
 import javax.jms.JMSContext;
 import javax.jms.JMSRuntimeException;
 import javax.jms.Queue;
+import java.security.Principal;
 
 @ManagedBean
 @RequestScoped
@@ -36,19 +42,20 @@ public class ReceiverBean {
             String text = receiver.receiveBody(String.class, 1000);
 
             if (text != null) {
+
                 FacesMessage facesMessage =
                         new FacesMessage("Reading message: " + text);
                 FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-//                return text;
+
             } else {
                 FacesMessage facesMessage =
-                        new FacesMessage("No message received after 1 second");
+                        new FacesMessage("No new alerts for you.");
                 FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-//                return "No messages for you";
             }
         } catch (JMSRuntimeException t) {
 
             System.out.println(t.toString());
         }
     }
+
 }

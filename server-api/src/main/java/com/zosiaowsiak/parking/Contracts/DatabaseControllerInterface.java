@@ -4,7 +4,6 @@ import com.zosiaowsiak.parking.Models.Employee;
 import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface DatabaseControllerInterface {

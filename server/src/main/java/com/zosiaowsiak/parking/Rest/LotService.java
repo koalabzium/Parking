@@ -13,9 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Path("/lots")
@@ -33,7 +31,6 @@ public class LotService {
     @Produces("application/json")
     @Path("/")
     public Response getLotIds(){
-        System.out.println("GETING LOTS IDS");
         List<Integer> lotsIds = new ArrayList<>();
         ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
         List<ParkingLot> lots = parkingLotDAO.getAllLots();
@@ -50,52 +47,52 @@ public class LotService {
 
     }
 
-    @POST
-    @Consumes("application/json")
-    @Path("/arrive")
-    public Response lotTaken(InputStream inputStream){
-        JSONParser jsonParser = new JSONParser();
-        JSONObject json;
-        try {
-            json = (JSONObject)jsonParser.parse(
-                    new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-            return Response.status(500).build();
-        }
-        Object spotIdObj = json.get("parkingLotId");
-        String lotId = spotIdObj.toString();
-
-        ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
-        parkingLotDAO.setLotAsTaken(Integer.parseInt(lotId));
-
-        //TODO USTAW JAKOŚ EVENT CZY KOLEJKE CZY COŚ...
-        return Response.ok().build();
-    }
-
-
-    @POST
-    @Consumes("application/json")
-    @Path("/leave")
-    public Response lotFreed(InputStream inputStream){
-        JSONParser jsonParser = new JSONParser();
-        JSONObject json;
-        try {
-            json = (JSONObject)jsonParser.parse(
-                    new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-            return Response.status(500).build();
-        }
-        Object spotIdObj = json.get("parkingLotId");
-        String lotId = spotIdObj.toString();
-
-        ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
-        parkingLotDAO.setLotAsFree(Integer.parseInt(lotId));
-
-        //TODO USTAW JAKOŚ EVENT CZY KOLEJKE CZY COŚ...
-        return Response.ok().build();
-    }
+//    @POST
+//    @Consumes("application/json")
+//    @Path("/arrive")
+//    public Response lotTaken(InputStream inputStream){
+//        JSONParser jsonParser = new JSONParser();
+//        JSONObject json;
+//        try {
+//            json = (JSONObject)jsonParser.parse(
+//                    new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+//        } catch (IOException | ParseException e) {
+//            e.printStackTrace();
+//            return Response.status(500).build();
+//        }
+//        Object spotIdObj = json.get("parkingLotId");
+//        String lotId = spotIdObj.toString();
+//
+//        ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
+//        parkingLotDAO.setLotAsTaken(Integer.parseInt(lotId));
+//
+//        //TODO USTAW JAKOŚ EVENT CZY KOLEJKE CZY COŚ...
+//        return Response.ok().build();
+//    }
+//
+//
+//    @POST
+//    @Consumes("application/json")
+//    @Path("/leave")
+//    public Response lotFreed(InputStream inputStream){
+//        JSONParser jsonParser = new JSONParser();
+//        JSONObject json;
+//        try {
+//            json = (JSONObject)jsonParser.parse(
+//                    new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+//        } catch (IOException | ParseException e) {
+//            e.printStackTrace();
+//            return Response.status(500).build();
+//        }
+//        Object spotIdObj = json.get("parkingLotId");
+//        String lotId = spotIdObj.toString();
+//
+//        ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
+//        parkingLotDAO.setLotAsFree(Integer.parseInt(lotId));
+//
+//        //TODO USTAW JAKOŚ EVENT CZY KOLEJKE CZY COŚ...
+//        return Response.ok().build();
+//    }
 }
 
 

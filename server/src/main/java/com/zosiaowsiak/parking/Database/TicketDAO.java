@@ -1,8 +1,6 @@
 package com.zosiaowsiak.parking.Database;
 
 
-import com.zosiaowsiak.parking.Models.ParkingLot;
-import com.zosiaowsiak.parking.Models.Ticket;
 import com.zosiaowsiak.parking.Models.Ticket;
 
 import javax.persistence.EntityManager;

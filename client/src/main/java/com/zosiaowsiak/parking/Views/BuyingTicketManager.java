@@ -1,21 +1,13 @@
 package com.zosiaowsiak.parking.Views;
 
-import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 
 import com.google.gson.Gson;
-import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
-import com.zosiaowsiak.parking.Models.ParkingLot;
 import org.json.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;

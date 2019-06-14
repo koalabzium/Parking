@@ -8,10 +8,7 @@ import javax.ejb.Singleton;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.jms.JMSConnectionFactory;
-import javax.jms.JMSContext;
-import javax.jms.JMSRuntimeException;
-import javax.jms.Queue;
+import javax.jms.*;
 
 @Singleton
 @Remote(MessageSenderInterface.class)
@@ -24,9 +21,9 @@ public class MessageSender implements MessageSenderInterface {
     @JMSConnectionFactory("java:jboss/DefaultJMSConnectionFactory")
     private JMSContext context;
 
-    public void sendMessage(String messageText){
+    public void sendMessage(String messageText, Integer area){
         try {
-            String text = "Message from producer: " + messageText;
+            String text = "Message: \"" + messageText + "\" For area: " + area;
             context.createProducer().send(myQueue, text);
 
             FacesMessage facesMessage =
@@ -36,4 +33,6 @@ public class MessageSender implements MessageSenderInterface {
             System.out.println(t.toString());
         }
     }
+
+
 }

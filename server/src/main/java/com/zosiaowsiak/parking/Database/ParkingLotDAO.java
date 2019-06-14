@@ -1,12 +1,14 @@
 package com.zosiaowsiak.parking.Database;
 
 import com.zosiaowsiak.parking.Models.ParkingLot;
+import com.zosiaowsiak.parking.Models.Ticket;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ParkingLotDAO {
@@ -82,5 +84,30 @@ public class ParkingLotDAO {
             }
         }
         return lotsIdByArea;
+    }
+
+    public ParkingLot getLotById(Integer lotId) {
+        List<ParkingLot> lots = getAllLots();
+        for(ParkingLot l : lots){
+            if(l.getId() == lotId){
+                return l;
+            }
+        }
+        return null;
+    }
+
+    public boolean hasValidTicket(ParkingLot lot) {
+        TicketDAO ticketDAO = new TicketDAO();
+        List<Ticket> tickets = ticketDAO.getAll();
+        Date now = new Date();
+        for (Ticket t : tickets) {
+            if(t.getLotId() == lot.getId()){
+                System.out.println(t.getEndTime() + " : " + now);
+                if (t.getEndTime().after(now))
+                    return true;
+            }
+        }
+        return false;
+
     }
 }

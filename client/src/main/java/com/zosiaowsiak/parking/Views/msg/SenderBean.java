@@ -41,7 +41,7 @@ public class SenderBean implements Serializable {
     }
 
     public void sendMessage() {
-        messageSender.sendMessage(messageText);
+        messageSender.sendMessage(messageText, 2);
     }
 
 

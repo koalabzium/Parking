@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 >
     <parent>
         <artifactId>theatre</artifactId>
@@ -45,11 +45,7 @@
             <artifactId>artemis-core-client</artifactId>
             <version>RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>artemis-core-client</artifactId>
-            <version>RELEASE</version>
-        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.json/json -->
         <!-- https://mvnrepository.com/artifact/org.json/json -->
         <dependency>
@@ -114,7 +110,7 @@
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>jaxws-rt</artifactId>
             <version>2.1.4</version>
-        </dependency> to narzędzie, które działa z linii poleceń.Używa się go aby z kontraktu WSDL wygenerować gotowy do użycia interfejs w javie. Jest to tak z
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.jms/jms -->
         <dependency>
@@ -123,7 +119,7 @@
             <version>1.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-jms-client-bom -->
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.wildfly/wildfly-jms-client-bom &ndash;&gt;-->
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-jms-client-bom</artifactId>
@@ -131,6 +127,6 @@
             <type>pom</type>
         </dependency>
 
-
     </dependencies>
+
 </project>

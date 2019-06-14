@@ -1,7 +1,6 @@
 package com.zosiaowsiak.parking.Database;
 
 import com.zosiaowsiak.parking.Models.Employee;
-import com.zosiaowsiak.parking.Models.ParkingLot;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

@@ -1,6 +1,7 @@
 package com.zosiaowsiak.parking.Soap;
 
 import com.zosiaowsiak.parking.Database.DatabaseController;
+import com.zosiaowsiak.parking.Timers.Scheduler;
 
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
@@ -16,6 +17,8 @@ public class SoapService {
     @WebMethod(action = "Arrive")
     @WebResult(name = "greet")
     public void Arrive(@WebParam(name="answer") Integer lot){
+        Scheduler scheduler = new Scheduler();
+        scheduler.scheduleCheckingParkingLot(lot);
         DatabaseController databaseController = new DatabaseController();
         databaseController.setLotAsTaken(lot);
     }

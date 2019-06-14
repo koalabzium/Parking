@@ -1,8 +1,6 @@
 package com.zosiaowsiak.parking.Views;
 
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
 import com.zosiaowsiak.parking.Models.Employee;
 import com.zosiaowsiak.parking.Models.ParkingLot;
