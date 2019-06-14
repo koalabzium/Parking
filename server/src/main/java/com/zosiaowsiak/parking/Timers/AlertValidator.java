@@ -8,12 +8,32 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimerTask;
 
-public class AlertValidator  {
+public class AlertValidator extends TimerTask {
 
+    private Integer lotId;
     private ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
+    private MessageSender messageSender = new MessageSender();
 
+    public AlertValidator(Integer lotId){
 
-    public boolean shouldAlert(ParkingLot lot) {
+        this.lotId = lotId;
+
+    }
+
+    @Override
+    public void run() {
+
+        System.out.println("TIMER RUN Checking parking spot "+lotId);
+
+        ParkingLot lot = parkingLotDAO.getLotById(lotId);
+        if (shouldAlert(lot)) {
+            System.out.println("ALERT!!! - PARKING  LOT: " + lot);
+            messageSender.sendMessage("CHECK PARKING LOT NR: " + lotId, lot.getArea());
+        }
+
+    }
+
+    private boolean shouldAlert(ParkingLot lot) {
 
         if(!lot.getIsoccupied()) return false;
 

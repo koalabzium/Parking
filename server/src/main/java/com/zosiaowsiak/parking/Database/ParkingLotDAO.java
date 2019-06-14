@@ -8,8 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.sql.Timestamp;
 
 public class ParkingLotDAO {
 
@@ -39,6 +41,10 @@ public class ParkingLotDAO {
             ParkingLot foundLot = em.find(ParkingLot.class, lotId);
             if(!em.getTransaction().isActive()) em.getTransaction().begin();
             foundLot.setIsoccupied(true);
+            Date date= new Date();
+            long time = date.getTime();
+            Timestamp ts = new Timestamp(time);
+            foundLot.setArrivalTime(ts);
             em.getTransaction().commit();
             System.out.println("Updated to occupied lot nr: " + lotId);
 
