@@ -8,11 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bcfc2edb-b564-447b-8737-c730c6ae3fb6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Database/ParkingLotDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Database/ParkingLotDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/AlertValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/AlertValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/ParkingTimerTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/Scheduler.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/server-api/target/" />
     <ignored path="$PROJECT_DIR$/client/target/" />
@@ -101,22 +98,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/main/java/com/zosiaowsiak/parking/Views/msg/ReceiverBean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/main/java/com/zosiaowsiak/parking/Views/DashboardManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+              <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -124,7 +109,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/Scheduler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
+            <state relative-caret-position="161">
               <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -145,11 +130,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Database/ParkingLotDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="42" column="50" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
+            <state relative-caret-position="268">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,11 +142,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://9531a6e1-fc17-455f-90e6-9576693bacf0/database/postgres/schema/public/table/tickets">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server-api/src/main/java/com/zosiaowsiak/parking/Models/Ticket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="97" column="5" lean-forward="true" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/AlertValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+            <state relative-caret-position="361">
+              <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,19 +194,6 @@
               <caret line="25" column="79" selection-start-line="25" selection-start-column="79" selection-end-line="25" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/main/java/com/zosiaowsiak/parking/Views/msg/SenderBean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
-              <folding>
-                <element signature="e#1159#1160#0" expanded="true" />
-                <element signature="e#1216#1217#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -240,7 +233,6 @@
         <option value="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Database/EmployeeDAO.java" />
         <option value="$PROJECT_DIR$/client/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Database/TicketDAO.java" />
-        <option value="$PROJECT_DIR$/server-api/src/main/java/com/zosiaowsiak/parking/Models/Ticket.java" />
         <option value="$PROJECT_DIR$/client/src/main/webapp/logged/index.xhtml" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/App/MessageStorage.java" />
         <option value="$PROJECT_DIR$/server-api/src/main/java/com/zosiaowsiak/parking/Contracts/MessageStorageInterface.java" />
@@ -280,8 +272,9 @@
         <option value="$PROJECT_DIR$/client/src/main/java/com/zosiaowsiak/parking/Views/msg/ReceiverBean.java" />
         <option value="$PROJECT_DIR$/client/src/main/java/com/zosiaowsiak/parking/Views/DashboardManager.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/ParkingTimerTask.java" />
-        <option value="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/AlertValidator.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/Scheduler.java" />
+        <option value="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/AlertValidator.java" />
+        <option value="$PROJECT_DIR$/server-api/src/main/java/com/zosiaowsiak/parking/Models/Ticket.java" />
         <option value="$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Database/ParkingLotDAO.java" />
       </list>
     </option>
@@ -604,7 +597,7 @@
     <property name="JPA.DatabaseSchemaImportDialog" value="9531a6e1-fc17-455f-90e6-9576693bacf0" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560515203949" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560517549074" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../park-me" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -841,12 +834,12 @@
       <workItem from="1560391648281" duration="3807000" />
       <workItem from="1560417644666" duration="5771000" />
       <workItem from="1560505668643" duration="4145000" />
-      <workItem from="1560511264772" duration="3785000" />
+      <workItem from="1560511264772" duration="6439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114977000" />
+    <option name="totallyTimeSpent" value="117631000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -861,7 +854,7 @@
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.775" visible="true" weight="0.19300605" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.775" visible="true" weight="0.19300605" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Persistence" order="2" sideWeight="0.225" side_tool="true" weight="0.19300605" />
       <window_info id="Designer" order="3" />
@@ -873,13 +866,13 @@
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.31367293" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3297587" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49966374" visible="true" weight="0.28150135" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.49966374" visible="true" weight="0.22520107" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2989276" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.3297587" />
       <window_info anchor="bottom" id="Database Console" order="8" weight="0.25603217" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.53485256" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.18364611" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Tool Output" order="11" weight="0.3297587" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.5003362" side_tool="true" weight="0.3378016" />
@@ -894,7 +887,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="JSF" order="5" />
-      <window_info anchor="right" id="Database" order="6" weight="0.2118359" />
+      <window_info anchor="right" id="Database" order="6" visible="true" weight="0.2118359" />
       <window_info anchor="right" id="Maven" order="7" weight="0.32952252" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
@@ -946,8 +939,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server-api/src/main/java/com/zosiaowsiak/parking/Contracts/SeatsServiceInterface.java" />
-    <entry file="file://$PROJECT_DIR$/server-api/src/main/java/com/zosiaowsiak/parking/Contracts/SeatAvailabilityServiceInterface.java" />
     <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/App/MessageSender.java" />
     <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/App/MessageStorage.java" />
     <entry file="file://$PROJECT_DIR$/client/src/main/webapp/parking-meter/buyingTicket.xhtml">
@@ -1023,13 +1014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://9531a6e1-fc17-455f-90e6-9576693bacf0/database/postgres/schema/public/table/parkinglot">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1181,7 +1165,7 @@
     <entry file="file://$PROJECT_DIR$/client/src/main/java/com/zosiaowsiak/parking/Views/DashboardManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="11" column="26" lean-forward="true" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1189,16 +1173,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
           <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server-api/src/main/java/com/zosiaowsiak/parking/Contracts/SchedulerInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1235,20 +1209,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/Scheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+    <entry file="das://9531a6e1-fc17-455f-90e6-9576693bacf0/database/postgres/schema/public/table/parkinglot">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Database/ParkingLotDAO.java">
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/Scheduler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="42" column="50" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
+        <state relative-caret-position="161">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1257,8 +1228,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Timers/AlertValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        <state relative-caret-position="361">
+          <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://9531a6e1-fc17-455f-90e6-9576693bacf0/database/postgres/schema/public/table/tickets">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server-api/src/main/java/com/zosiaowsiak/parking/Contracts/SchedulerInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server-api/src/main/java/com/zosiaowsiak/parking/Models/Ticket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="97" column="5" lean-forward="true" selection-start-line="97" selection-start-column="5" selection-end-line="97" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/main/java/com/zosiaowsiak/parking/Database/ParkingLotDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

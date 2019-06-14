@@ -35,18 +35,18 @@ public class AlertValidator extends TimerTask {
 
     private boolean shouldAlert(ParkingLot lot) {
 
-        if(!lot.getIsoccupied()) return false;
+        if(!lot.getIsoccupied()) {
+            return false;
+        }
 
-        if(parkingLotDAO.hasValidTicket(lot)) return false;
-
-        return !lessThanTenMinutes(lot);
+        return !parkingLotDAO.hasValidTicket(lot);
     }
 
-    private boolean lessThanTenMinutes(ParkingLot lot) {
-
-        Calendar date = Calendar.getInstance();
-        long currTimeMillis = date.getTimeInMillis();
-        Date maxArrivalTime = new Date(currTimeMillis - (10 * 60 * 1000-1));
-        return !lot.getArrivalTime().before(maxArrivalTime);
-    }
+//    private boolean lessThanTenMinutes(ParkingLot lot) {
+//
+//        Calendar date = Calendar.getInstance();
+//        long currTimeMillis = date.getTimeInMillis();
+//        Date maxArrivalTime = new Date(currTimeMillis - (1 * 60 * 1000));
+//        return !lot.getArrivalTime().before(maxArrivalTime);
+//    }
 }

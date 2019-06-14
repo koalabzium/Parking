@@ -105,15 +105,16 @@ public class ParkingLotDAO {
     public boolean hasValidTicket(ParkingLot lot) {
         TicketDAO ticketDAO = new TicketDAO();
         List<Ticket> tickets = ticketDAO.getAll();
-        Date now = new Date();
-        for (Ticket t : tickets) {
-            if(t.getLotId() == lot.getId()){
-                System.out.println(t.getEndTime() + " : " + now);
-                if (t.getEndTime().after(now))
-                    return true;
-            }
-        }
-        return false;
+        System.out.println("SPRAWDZAM CZY VALID TICKET...");
 
+        return tickets
+                .stream()
+                .filter(t -> t.getLotId() == lot.getId())
+                .anyMatch(ParkingLotDAO::isExpired);
+    }
+
+    private static boolean isExpired(Ticket ticket) {
+        Date now = new Date();
+        return ticket.getEndTime().after(now);
     }
 }
