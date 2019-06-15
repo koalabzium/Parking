@@ -79,6 +79,11 @@ public class DatabaseController implements DatabaseControllerInterface {
 //        messageSender.sendMessage("WIADOMOOOOOOOOŚĆ!!!!!!!!!");
     }
 
+    @Override
+    public ParkingLot getLotById(Integer id) {
+        return parkingLotDAO.getLotById(id);
+    }
+
     public String hashPassword(String password){
         String generatedPassword = "";
         try {

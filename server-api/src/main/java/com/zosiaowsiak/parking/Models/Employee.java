@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,9 +14,13 @@ public class Employee implements Serializable {
     private String pass;
     private Boolean isadmin;
     private Integer area;
-
+    private List<String> messages = new ArrayList<String>();
 
     public Employee() {
+    }
+
+    public void addMessage(String message){
+        messages.add(message);
     }
 
     public Employee(String login, String pass, Boolean isadmin, Integer area) {

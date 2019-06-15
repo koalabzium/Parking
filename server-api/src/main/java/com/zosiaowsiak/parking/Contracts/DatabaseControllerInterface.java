@@ -24,4 +24,6 @@ public interface DatabaseControllerInterface {
     List<Ticket> getTicketsByArea(Integer area);
 
     void tempSendMessage();
+
+    ParkingLot getLotById(Integer id);
 }

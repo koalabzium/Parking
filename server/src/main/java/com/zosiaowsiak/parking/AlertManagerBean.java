@@ -43,6 +43,6 @@ public class AlertManagerBean implements AlertManager {
     public void alert(ParkingLot spot) {
         System.out.println("Detected unpaid parking spot!");
 
-        mdbSender.sendMessage(spot.getArea()+":"+spot.getId());
+        mdbSender.sendMessage("" + spot.getId());
     }
 }
