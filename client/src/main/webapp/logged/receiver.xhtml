@@ -11,14 +11,14 @@
     <h1>Jesteś zalogowany #{notificationView.getEmployeeName()} </h1>
 
     <h:form id="panel">
-        <h:dataTable value="#{notificationView.messages}" var="msg"  style="border-spacing: 8px">
+        <h:dataTable value="#{notificationView.messages}" var="msg" styleClass="order-table"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row" style="border-spacing: 8px">
             <h:column>
                 <f:facet name="header">Wiadomość</f:facet>
                 #{msg}
             </h:column>
-        </h:dataTable>
-        <p:poll interval="3" listener="#{notificationView.getMessages()}" process="@this" update="panel" />
-    </h:form>
+        </h:dataTable>    </h:form>
 </h:body>
 </html>
 

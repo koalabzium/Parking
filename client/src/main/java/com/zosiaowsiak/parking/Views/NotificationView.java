@@ -36,11 +36,12 @@ public class NotificationView {
                 employee = databaseController.getEmployeeByName(principal.getName());
             }
         }
-        messages = messageStorageBean.getMessages(employee.getId());
+        messages = messageStorageBean.getMessages(employee.getLogin());
     }
 
     public List<String> getMessages() {
-        messages.addAll(messageStorageBean.getMessages(employee.getId()));
+
+        messages.addAll(messageStorageBean.getMessages(employee.getLogin()));
         return messages;
     }
 
