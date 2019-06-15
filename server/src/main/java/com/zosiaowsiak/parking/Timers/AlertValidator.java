@@ -16,9 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimerTask;
 
-
-@ManagedBean
-@SessionScoped
+@Stateless
 public class AlertValidator extends TimerTask {
 
     private Integer lotId;
@@ -51,14 +49,20 @@ public class AlertValidator extends TimerTask {
 
         ParkingLot lot = parkingLotDAO.getLotById(lotId);
         if (shouldAlert(lot)) {
-            Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-            try {
-                Queue queue = session.createQueue("customerQueue");
-            } catch (JMSException e) {
-                e.printStackTrace();
-            }
-            System.out.println("ALERT!!! - PARKING  LOT: " + lotId);
-            messageSender.sendMessage("alert", 2);
+            SenderBean senderBean = new SenderBean();
+            senderBean.sendMessage();
+//            try {
+//                String text = "Message: \"\" For area: ";
+//                System.out.println("SENDING MESSAGE...");
+//                context.createProducer().send(myQueue, text);
+////
+//                System.out.println("MESSAGE SENT: " + text);
+////            FacesMessage facesMessage =
+////                    new FacesMessage("Sent message: " + text);
+////            FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+//            } catch (JMSRuntimeException t) {
+//                System.out.println(t.toString());
+//            }
         }
 
     }
