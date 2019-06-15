@@ -117,4 +117,28 @@ public class ParkingLotDAO {
         Date now = new Date();
         return ticket.getEndTime().after(now);
     }
+
+    public List<Integer> getAllTakenLotsIds() {
+        List<ParkingLot> lots = getAllLots();
+        List<Integer> taken = new ArrayList<>();
+
+        for(ParkingLot parkingLot : lots){
+            if(parkingLot.getIsoccupied()){
+                taken.add(parkingLot.getId());
+            }
+        }
+        return taken;
+    }
+
+    public List<Integer> getAllFreeLotsIds() {
+        List<ParkingLot> lots = getAllLots();
+        List<Integer> free = new ArrayList<>();
+
+        for(ParkingLot parkingLot : lots){
+            if(!parkingLot.getIsoccupied()){
+                free.add(parkingLot.getId());
+            }
+        }
+        return free;
+    }
 }

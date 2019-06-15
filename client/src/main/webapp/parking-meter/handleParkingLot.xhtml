@@ -4,15 +4,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head><title>Take a parking space</title></h:head>
 <h:body>
+    <h2>Handle parking lots</h2>
     <h:form>
-        select Lot: <h:selectOneMenu binding="#{selectedLotId}">
-            <f:selectItems value="#{buyingTicketManager.freeLotIds}"/>
-        </h:selectOneMenu><br/>
-        <h:commandButton label="Arrive" value="Arrive" action="#{parkingLotManager.takeParkingLot(selectedLotId.value)}"/>
-        <h:commandButton label="Leave" value="Leave" action="#{parkingLotManager.freeParkingLot(selectedLotId.value)}"/>
-    </h:form>
+
+        <h:form id="table">
+
+            <h:dataTable id="table_1" value="#{buyingTicketManager.takenLots}" var="b" cellpadding="2" cellspacing="2" border="1"
+                         style="padding: 25px;
+                            text-align: center;
+                            font-family: Arial, Verdana, sans-serif;">
+
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    #{b}
+                </h:column>
+
+                <h:column>
+                    <h:commandButton label="Leave" value="Leave" action="#{parkingLotManager.freeParkingLot(b)}"/>
+                </h:column>
+            </h:dataTable>
+            <h:dataTable id="table_2" value="#{buyingTicketManager.freeLots}" var="b" cellpadding="2" cellspacing="2" border="1"
+                         style="padding: 25px;
+                            text-align: center;
+                            font-family: Arial, Verdana, sans-serif;">
+
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    #{b}
+                </h:column>
+
+                <h:column>
+                    <h:commandButton label="Arrive" value="Arrive" action="#{parkingLotManager.takeParkingLot(b)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+
+
+   </h:form>
 </h:body>
 </html>

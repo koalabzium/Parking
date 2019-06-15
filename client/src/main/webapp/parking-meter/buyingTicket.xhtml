@@ -11,11 +11,12 @@
 
         Select lot ID:
         <h:selectOneMenu binding="#{selectedLot}">
-            <f:selectItems value="#{buyingTicketManager.freeLotIds}"/>
+            <f:selectItems value="#{buyingTicketManager.takenLots}"/>
         </h:selectOneMenu><br/>
         Select how long will you stay:
         <h:selectOneMenu binding="#{stayDuration}">
-            <f:selectItem itemValue="30" itemLabel="30 minutes"/>
+            <f:selectItem itemValue="0.05" itemLabel="3 minutes"/>
+            <f:selectItem itemValue="0.5" itemLabel="30 minutes"/>
             <f:selectItem itemValue="1" itemLabel="1 hour"/>
             <f:selectItem itemValue="1.5" itemLabel="1.5 hour"/>
             <f:selectItem itemValue="2" itemLabel="2 hours"/>

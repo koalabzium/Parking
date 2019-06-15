@@ -52,12 +52,23 @@ public class BuyingTicketManager {
 //        return "success";
     }
 
-    public List<Integer> getFreeLotIds() throws IOException {
+    public List<Integer> getTakenLots() throws IOException {
 
         // TODO return only free lots
 
-        URL url = new URL(baseURL + "lots");
+        URL url = new URL(baseURL + "takenLots");
 
+        return sendGet(url);
+
+    }
+
+    public List<Integer> getFreeLots() throws IOException{
+        URL url = new URL(baseURL + "freeLots");
+        return sendGet(url);
+
+    }
+
+    public List<Integer> sendGet(URL url) throws IOException{
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.setDoOutput(true);
@@ -84,7 +95,6 @@ public class BuyingTicketManager {
         }
 
         return lotIds;
-
     }
 
 

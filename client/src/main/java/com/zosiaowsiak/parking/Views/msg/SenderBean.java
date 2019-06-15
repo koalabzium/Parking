@@ -40,6 +40,7 @@ public class SenderBean implements Serializable {
     public SenderBean() {
     }
 
+
     public void sendMessage() {
         messageSender.sendMessage(messageText, 2);
     }

@@ -64,7 +64,7 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
     }
 
 
-    public List<Ticket> getTickets() {
+    public List<Ticket> getActiveTickets() {
         Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
         String name = principal.getName();
         Employee employee = databaseController.getEmployeeByName(name);

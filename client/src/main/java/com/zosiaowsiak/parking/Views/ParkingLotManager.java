@@ -44,7 +44,7 @@ public class ParkingLotManager {
                 "   <soapenv:Body>\n" +
                 "      <soap:Leave>\n" +
                 "         <!--Optional:-->\n" +
-                "         <answer>1</answer>\n" +
+                "         <answer>" + parkingLotId + "</answer>\n" +
                 "      </soap:Leave>\n" +
                 "   </soapenv:Body>\n" +
                 "</soapenv:Envelope>";

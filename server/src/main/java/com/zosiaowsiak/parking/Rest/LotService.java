@@ -16,7 +16,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/lots")
+@Path("/")
 public class LotService {
 
     @GET
@@ -29,19 +29,21 @@ public class LotService {
 
     @GET
     @Produces("application/json")
-    @Path("/")
-    public Response getLotIds(){
-        List<Integer> lotsIds = new ArrayList<>();
+    @Path("/takenLots")
+    public Response getTakenLots(){
         ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
-        List<ParkingLot> lots = parkingLotDAO.getAllLots();
-        if (lots == null || lots.size()==0)
-            return Response.status(500).entity("Error while getting Parking Spots from Database").build();
+        List<Integer> lotsIds = parkingLotDAO.getAllTakenLotsIds();
 
-        for (ParkingLot lot : lots){
-            lotsIds.add(lot.getId());
-        }
+        return Response.status(200).entity(lotsIds).build();
 
-        System.out.println(lotsIds);
+    }
+
+    @GET
+    @Produces("application/json")
+    @Path("/freeLots")
+    public Response getFreeLots(){
+        ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
+        List<Integer> lotsIds = parkingLotDAO.getAllFreeLotsIds();
 
         return Response.status(200).entity(lotsIds).build();
 
