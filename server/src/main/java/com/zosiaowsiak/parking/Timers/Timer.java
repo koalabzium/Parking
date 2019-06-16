@@ -1,20 +1,20 @@
-package com.zosiaowsiak.parking;
+package com.zosiaowsiak.parking.Timers;
 
 
 
-import com.zosiaowsiak.parking.Contracts.AlertManager;
+import com.zosiaowsiak.parking.Contracts.SchedulerInterface;
 import com.zosiaowsiak.parking.Database.ParkingLotDAO;
 import com.zosiaowsiak.parking.Models.ParkingLot;
 
 import java.util.TimerTask;
 
-public class CheckSpotForAlertsTimerTask extends TimerTask {
+public class Timer extends TimerTask {
     private int spotId;
-    private AlertManager alertManager;
+    private SchedulerInterface schedulerInterface;
 
-    public CheckSpotForAlertsTimerTask(int spotId, AlertManager alertManager) {
+    public Timer(int spotId, SchedulerInterface schedulerInterface) {
         this.spotId = spotId;
-        this.alertManager = alertManager;
+        this.schedulerInterface = schedulerInterface;
     }
 
     public void run() {
@@ -22,7 +22,7 @@ public class CheckSpotForAlertsTimerTask extends TimerTask {
         ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
         ParkingLot spot = parkingLotDAO.getLotById(spotId);
         if (isAlertValid(spot)) {
-            alertManager.alert(spot);
+            schedulerInterface.alert(spot);
         }
     }
 

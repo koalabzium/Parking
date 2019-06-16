@@ -1,6 +1,6 @@
 package com.zosiaowsiak.parking.Soap;
 
-import com.zosiaowsiak.parking.Contracts.AlertManager;
+import com.zosiaowsiak.parking.Contracts.SchedulerInterface;
 import com.zosiaowsiak.parking.Database.ParkingLotDAO;
 
 import javax.ejb.EJB;
@@ -15,8 +15,8 @@ import javax.jws.WebService;
 public class SoapService {
 
 
-    @EJB(lookup = "java:global/server/AlertManagerBean")
-    AlertManager alertManager;
+    @EJB(lookup = "java:global/server/Scheduler")
+    SchedulerInterface schedulerInterface;
 
     @WebMethod(action = "Arrive")
     @WebResult(name = "greet")
@@ -24,7 +24,7 @@ public class SoapService {
         System.out.println("JESTEM W SOAPSERVICE");
         ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
         parkingLotDAO.setLotAsTaken(lot);
-        alertManager.scheduleSpotCheck(lot);
+        schedulerInterface.scheduleSpotCheck(lot);
     }
 
     @WebMethod(action = "Leave")

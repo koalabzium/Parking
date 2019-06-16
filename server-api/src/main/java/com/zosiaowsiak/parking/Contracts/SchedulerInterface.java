@@ -1,11 +1,14 @@
 package com.zosiaowsiak.parking.Contracts;
 
+
 import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
 
-public interface SchedulerInterface {
-    void scheduleCheckingTicket(Ticket ticket);
-    void scheduleCheckingParkingLot(int lotId);
+import javax.ejb.Remote;
 
-    void alert(ParkingLot lot);
+@Remote
+public interface SchedulerInterface {
+    void alert(ParkingLot spot);
+    void scheduleSpotCheck(int spotId);
+    void scheduleTicketCheck(Ticket ticket);
 }
