@@ -53,11 +53,7 @@ public class BuyingTicketManager {
     }
 
     public List<Integer> getTakenLots() throws IOException {
-
-        // TODO return only free lots
-
         URL url = new URL(baseURL + "takenLots");
-
         return sendGet(url);
 
     }

@@ -35,7 +35,6 @@ public class LotService {
         List<Integer> lotsIds = parkingLotDAO.getAllTakenLotsIds();
 
         return Response.status(200).entity(lotsIds).build();
-
     }
 
     @GET
@@ -48,53 +47,6 @@ public class LotService {
         return Response.status(200).entity(lotsIds).build();
 
     }
-
-//    @POST
-//    @Consumes("application/json")
-//    @Path("/arrive")
-//    public Response lotTaken(InputStream inputStream){
-//        JSONParser jsonParser = new JSONParser();
-//        JSONObject json;
-//        try {
-//            json = (JSONObject)jsonParser.parse(
-//                    new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-//        } catch (IOException | ParseException e) {
-//            e.printStackTrace();
-//            return Response.status(500).build();
-//        }
-//        Object spotIdObj = json.get("parkingLotId");
-//        String lotId = spotIdObj.toString();
-//
-//        ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
-//        parkingLotDAO.setLotAsTaken(Integer.parseInt(lotId));
-//
-//        //TODO USTAW JAKOŚ EVENT CZY KOLEJKE CZY COŚ...
-//        return Response.ok().build();
-//    }
-//
-//
-//    @POST
-//    @Consumes("application/json")
-//    @Path("/leave")
-//    public Response lotFreed(InputStream inputStream){
-//        JSONParser jsonParser = new JSONParser();
-//        JSONObject json;
-//        try {
-//            json = (JSONObject)jsonParser.parse(
-//                    new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-//        } catch (IOException | ParseException e) {
-//            e.printStackTrace();
-//            return Response.status(500).build();
-//        }
-//        Object spotIdObj = json.get("parkingLotId");
-//        String lotId = spotIdObj.toString();
-//
-//        ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
-//        parkingLotDAO.setLotAsFree(Integer.parseInt(lotId));
-//
-//        //TODO USTAW JAKOŚ EVENT CZY KOLEJKE CZY COŚ...
-//        return Response.ok().build();
-//    }
 }
 
 

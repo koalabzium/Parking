@@ -1,13 +1,15 @@
 package com.zosiaowsiak.parking.JMS;
 
 import javax.annotation.Resource;
+import javax.ejb.Singleton;
 import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.inject.Inject;
 import javax.jms.JMSContext;
 import javax.jms.Queue;
 import javax.jms.TextMessage;
 
-@Stateless
+@Singleton
 public class AlertSender {
 
     @Inject

@@ -1,9 +1,7 @@
 package com.zosiaowsiak.parking.Soap;
 
 import com.zosiaowsiak.parking.Contracts.AlertManager;
-import com.zosiaowsiak.parking.Database.DatabaseController;
 import com.zosiaowsiak.parking.Database.ParkingLotDAO;
-import com.zosiaowsiak.parking.Timers.Scheduler;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -11,7 +9,6 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
-import javax.xml.crypto.Data;
 
 @Stateless
 @WebService

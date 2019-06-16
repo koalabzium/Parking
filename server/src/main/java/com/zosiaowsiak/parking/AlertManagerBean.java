@@ -42,6 +42,7 @@ public class AlertManagerBean implements AlertManager {
 
     public void alert(ParkingLot spot) {
         System.out.println("Detected unpaid parking spot!");
+        System.out.println("alertSender is null: " + (alertSender == null));
 
         alertSender.sendMessage("" + spot.getId());
     }

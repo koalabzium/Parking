@@ -27,21 +27,18 @@ public class CheckSpotForAlertsTimerTask extends TimerTask {
     }
 
     public static boolean isAlertValid(ParkingLot spot) {
-        if (!spot.getIsoccupied())
-            return false;
-
         ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
+        System.out.println("Is alert valid for spot: " + spot.getId());
+        System.out.println("The spot is occupied: " + spot.getIsoccupied());
+        System.out.println("The spot has valid ticket: " + parkingLotDAO.hasValidTicket(spot));
+        if (!spot.getIsoccupied()) {
+            return false;
+        }
+
         if (parkingLotDAO.hasValidTicket(spot))
             return false;
 
-//        long ONE_MINUTE_IN_MILLIS = 60000;
-//        Calendar date = Calendar.getInstance();
-//        long timeInMillis = date.getTimeInMillis();
-//        Date afterSubtractingFiveMins = new Date(timeInMillis - (5 * ONE_MINUTE_IN_MILLIS-1));
-//
-//        if (spot.getArrivalTime().before(afterSubtractingFiveMins))
-//            return true;
-
+        System.out.println("isAlertValid - po sprawdzeniu ");
         return true;
     }
 }

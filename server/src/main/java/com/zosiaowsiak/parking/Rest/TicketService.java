@@ -1,12 +1,14 @@
 package com.zosiaowsiak.parking.Rest;
 
+import com.zosiaowsiak.parking.AlertManagerBean;
+import com.zosiaowsiak.parking.Contracts.AlertManager;
 import com.zosiaowsiak.parking.Database.TicketDAO;
 import com.zosiaowsiak.parking.Models.Ticket;
-import com.zosiaowsiak.parking.Timers.Scheduler;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -18,6 +20,10 @@ import java.util.Date;
 
 @Path("/tickets")
 public class TicketService {
+
+//    @EJB(lookup = "java:global/server/AlertManagerBean")
+//    AlertManager alertManager;
+
 
     @POST
     @Consumes("application/json")
@@ -48,8 +54,8 @@ public class TicketService {
         TicketDAO ticketDAO = new TicketDAO();
         ticketDAO.add(ticket);
 
-        Scheduler scheduler = new Scheduler();
-        scheduler.scheduleCheckingTicket(ticket);
+        new AlertManagerBean().scheduleTicketCheck(ticket);
+
         return Response.ok().build();
     }
 
