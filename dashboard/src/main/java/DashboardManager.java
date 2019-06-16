@@ -5,12 +5,10 @@ import com.zosiaowsiak.parking.Models.Employee;
 import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 import java.io.Serializable;
 import java.security.Principal;
 import java.util.List;
@@ -64,11 +62,6 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
         databaseController.addEmployee(newUserLogin, newUserPass, newUserArea);
     }
 
-    public Integer ticketsCount(){
-        List<Ticket> tickets = databaseController.getAllTickets();
-        return tickets.size();
-    }
-
 
     public List<Ticket> getActiveTickets() {
         Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
@@ -76,10 +69,10 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
         Employee employee = databaseController.getEmployeeByName(name);
         boolean isAdmin = employee.getIsadmin();
         if(isAdmin){
-            return databaseController.getAllTickets();
+            return databaseController.getActiveTickets();
         }
         else{
-            return databaseController.getTicketsByArea(employee.getArea());
+            return databaseController.getActiveTicketsByArea(employee.getArea());
         }
     }
 

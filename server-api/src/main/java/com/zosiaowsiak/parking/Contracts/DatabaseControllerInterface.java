@@ -19,9 +19,9 @@ public interface DatabaseControllerInterface {
 
     List<ParkingLot> getLotsByArea(Integer area);
 
-    List<Ticket> getAllTickets();
+    List<Ticket> getActiveTickets();
 
-    List<Ticket> getTicketsByArea(Integer area);
+    List<Ticket> getActiveTicketsByArea(Integer area);
 
     void tempSendMessage();
 

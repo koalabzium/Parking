@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TicketDAO {
@@ -42,8 +43,8 @@ public class TicketDAO {
         return result;
     }
 
-    public List<Ticket> getTicketsByArea(Integer area) {
-        List<Ticket> tickets = getAll();
+    public List<Ticket> getActiveTicketsByArea(Integer area) {
+        List<Ticket> tickets = getActiveTickets();
         List<Ticket> ticketsByArea = new ArrayList<>();
         ParkingLotDAO parkingLotDAO = new ParkingLotDAO();
         List<Integer> lotsIds = parkingLotDAO.getLotsIdByArea(area);
@@ -64,5 +65,16 @@ public class TicketDAO {
             }
         }
         return null;
+    }
+
+    public List<Ticket> getActiveTickets() {
+        List<Ticket> active = new ArrayList<>();
+        List<Ticket> tickets = getAll();
+        for (Ticket t : tickets){
+            if(t.getEndTime().after(new Date())){
+                active.add(t);
+            }
+        }
+        return active;
     }
 }

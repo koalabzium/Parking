@@ -9,6 +9,8 @@ import javax.ejb.Remote;
 import javax.ejb.Singleton;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Singleton
@@ -63,13 +65,13 @@ public class DatabaseController implements DatabaseControllerInterface {
     }
 
     @Override
-    public List<Ticket> getAllTickets() {
-        return ticketDAO.getAll();
+    public List<Ticket> getActiveTickets() {
+        return ticketDAO.getActiveTickets();
     }
 
     @Override
-    public List<Ticket> getTicketsByArea(Integer area) {
-        return ticketDAO.getTicketsByArea(area);
+    public List<Ticket> getActiveTicketsByArea(Integer area) {
+        return ticketDAO.getActiveTicketsByArea(area);
     }
 
     @Override
