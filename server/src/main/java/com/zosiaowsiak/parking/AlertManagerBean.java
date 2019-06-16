@@ -24,7 +24,7 @@ public class AlertManagerBean implements AlertManager {
 
     public void scheduleTicketCheck(Ticket ticket) {
         Timer timer = new Timer();
-//        timer.schedule(new CheckSpotForAlertsTimerTask(ticket.getLotId(),this), ticket.getEndTime());
+        timer.schedule(new CheckSpotForAlertsTimerTask(ticket.getLotId(),this), ticket.getEndTime());
     }
 
     public void scheduleSpotCheck(int spotId)  {

@@ -51,18 +51,7 @@ public class AlertValidator extends TimerTask {
         if (shouldAlert(lot)) {
             SenderBean senderBean = new SenderBean();
             senderBean.sendMessage();
-//            try {
-//                String text = "Message: \"\" For area: ";
-//                System.out.println("SENDING MESSAGE...");
-//                context.createProducer().send(myQueue, text);
-////
-//                System.out.println("MESSAGE SENT: " + text);
-////            FacesMessage facesMessage =
-////                    new FacesMessage("Sent message: " + text);
-////            FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-//            } catch (JMSRuntimeException t) {
-//                System.out.println(t.toString());
-//            }
+
         }
 
     }
