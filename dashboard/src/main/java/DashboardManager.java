@@ -5,6 +5,7 @@ import com.zosiaowsiak.parking.Models.Employee;
 import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -24,6 +25,8 @@ public class DashboardManager implements Serializable {
     @EJB(lookup = "java:global/server/DatabaseController")
     private DatabaseControllerInterface databaseController;
 
+    private Employee employee;
+
     /* TODO
  2. Pracownik strefy ma dostęp do danych dotyczący tylko jego strefy, admin ma dostęp do
 wszystkiego i widzi całość danych.
@@ -32,6 +35,8 @@ metodach EJB.
 4. Użytkownik powinien mieć możliwość zmiany swojego hasła, natomiast administrator powinien
 być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być trzymane jako plain text.
      */
+
+
 
     public String getLoggedName(){
         Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();

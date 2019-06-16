@@ -47,6 +47,10 @@ public class ReceiverBean {
         this.messages = messages;
     }
 
+//    public String getSomething(){
+//        return databaseController.getLotById(3).toString();
+//    }
+
     public String getEmployeeName(){
         return employee.getLogin();
     }

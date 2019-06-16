@@ -1,13 +1,13 @@
 package com.zosiaowsiak.parking.Models;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Entity
-public class ParkingLot {
+public class ParkingLot implements Serializable {
     private int id;
     private Boolean isoccupied;
     private Integer area;
@@ -24,6 +24,8 @@ public class ParkingLot {
     }
 
     @Basic
+    @GeneratedValue(generator = "incrementator")
+    @GenericGenerator(name="incrementator", strategy = "increment")
     @Column(name = "isoccupied")
     public Boolean getIsoccupied() {
         return isoccupied;

@@ -22,16 +22,5 @@
     </form>
 
 
-    <h1>Or add new user.</h1>
-    <h:form>
-        Login:
-        <h:inputText id="login" value="#{dashboardManager.newUserLogin}" required="true"/>
-        Password:
-        <h:inputText id="pass" value="#{dashboardManager.newUserPass}" required="true"/>
-        Zone:
-        <h:inputText id="area" value="#{dashboardManager.newUserArea}" required="true"/>
-
-        <h:commandButton value="Dodaj nowego pracownika" type="submit" action="#{dashboardManager.addEmployee}"/>
-    </h:form>
 </h:body>
 </html>

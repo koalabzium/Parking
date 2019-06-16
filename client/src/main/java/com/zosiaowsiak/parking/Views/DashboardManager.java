@@ -6,6 +6,7 @@ import com.zosiaowsiak.parking.Models.Employee;
 import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -17,9 +18,11 @@ import java.util.List;
 @Named("dashboardManager")
 @SessionScoped
 public class DashboardManager implements Serializable {
-    private String newUserLogin;
-    private String newUserPass;
-    private Integer newUserArea;
+
+    private Employee employee;
+    private List<ParkingLot> lots;
+    private List<Ticket> tickets;
+
 
     @EJB(lookup = "java:global/server/DatabaseController")
     private DatabaseControllerInterface databaseController;
@@ -33,6 +36,36 @@ metodach EJB.
 być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być trzymane jako plain text.
      */
 
+    @PostConstruct
+    public void init(){
+
+        boolean isAdmin = false;
+        Integer area = 0;
+
+        if (employee == null) {
+            Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+            if (principal != null) {
+                employee = databaseController.getEmployeeByName(principal.getName());
+                isAdmin = employee.getIsadmin();
+                area = employee.getArea();
+            }
+        }
+        if (tickets == null){
+            if(isAdmin){
+                tickets = databaseController.getAllTickets();
+            }else{
+                tickets = databaseController.getTicketsByArea(area);
+            }
+        }
+        if (lots == null){
+            if(isAdmin){
+                lots = databaseController.getLots();
+            }else{
+                lots = databaseController.getLotsByArea(area);
+            }
+        }
+    }
+
     public String getLoggedName(){
         Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
         return principal.getName();
@@ -40,66 +73,12 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
 
     public List<ParkingLot> getLots(){
 
-        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
-        String name = principal.getName();
-        Employee employee = databaseController.getEmployeeByName(name);
-        boolean isAdmin = employee.getIsadmin();
-        System.out.println(employee.getLogin() + " JEST ADMINEM? " + isAdmin);
-        if(isAdmin){
-            return databaseController.getLots();
-        }
-        else{
-            return databaseController.getLotsByArea(employee.getArea());
-        }
+        return lots;
     }
-
-    public void addEmployee(){
-
-        databaseController.addEmployee(newUserLogin, newUserPass, newUserArea);
-    }
-
-    public Integer ticketsCount(){
-        List<Ticket> tickets = databaseController.getAllTickets();
-        return tickets.size();
-    }
-
 
     public List<Ticket> getActiveTickets() {
-        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
-        String name = principal.getName();
-        Employee employee = databaseController.getEmployeeByName(name);
-        boolean isAdmin = employee.getIsadmin();
-        if(isAdmin){
-            return databaseController.getAllTickets();
-        }
-        else{
-            return databaseController.getTicketsByArea(employee.getArea());
-        }
-    }
 
-    public String getNewUserLogin() {
-        return newUserLogin;
+        return tickets;
     }
-
-    public void setNewUserLogin(String newUserLogin) {
-        this.newUserLogin = newUserLogin;
-    }
-
-    public String getNewUserPass() {
-        return newUserPass;
-    }
-
-    public void setNewUserPass(String newUserPass) {
-        this.newUserPass = newUserPass;
-    }
-
-    public Integer getNewUserArea() {
-        return newUserArea;
-    }
-
-    public void setNewUserArea(Integer newUserArea) {
-        this.newUserArea = newUserArea;
-    }
-
 
 }
