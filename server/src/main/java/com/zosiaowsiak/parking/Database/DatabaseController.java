@@ -110,21 +110,27 @@ public class DatabaseController implements DatabaseControllerInterface {
 
     @Override
     public List<ParkingLot> getFreeLots() {
+        parkingLotDAO = new ParkingLotDAO();
         return parkingLotDAO.getAllFreeLots();
     }
 
     @Override
     public List<ParkingLot> getTakenLots() {
+        parkingLotDAO = new ParkingLotDAO();
         return parkingLotDAO.getAllTakenLots();
     }
 
     @Override
     public List<ParkingLot> getFreeLotsByArea(Integer area) {
+        parkingLotDAO = new ParkingLotDAO();
         return parkingLotDAO.getAllFreeLots().stream().filter(parkingLot -> parkingLot.getArea().equals(area)).collect(Collectors.toList());
     }
 
     @Override
     public List<ParkingLot> getTakenLotsByArea(Integer area) {
+        parkingLotDAO = new ParkingLotDAO();
+        System.out.println("......................");
+        System.out.println("getTakenLotsByArea");
         return parkingLotDAO.getAllTakenLots().stream().filter(parkingLot -> parkingLot.getArea().equals(area)).collect(Collectors.toList());
     }
 

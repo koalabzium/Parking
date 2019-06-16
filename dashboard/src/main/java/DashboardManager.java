@@ -49,8 +49,8 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
         String name = principal.getName();
         Employee employee = databaseController.getEmployeeByName(name);
         boolean isAdmin = employee.getIsadmin();
-        System.out.println(employee.getLogin() + " JEST ADMINEM? " + isAdmin);
         if(isAdmin){
+
             return databaseController.getFreeLots();
         }else{
             return databaseController.getFreeLotsByArea(employee.getArea());
@@ -63,10 +63,11 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
         String name = principal.getName();
         Employee employee = databaseController.getEmployeeByName(name);
         boolean isAdmin = employee.getIsadmin();
-        System.out.println(employee.getLogin() + " JEST ADMINEM? " + isAdmin);
         if(isAdmin){
+            System.out.println("GET TAKEN LOTS: ");
             return databaseController.getTakenLots();
         }else{
+            System.out.println("GET TAKEN LOTS: ");
             return databaseController.getTakenLotsByArea(employee.getArea());
         }
     }
