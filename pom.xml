@@ -44,6 +44,7 @@
         <module>server</module>
         <module>server-api</module>
         <module>client</module>
+        <module>dashboard</module>
     </modules>
 
     <dependencies>
