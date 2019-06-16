@@ -2,6 +2,8 @@ package com.zosiaowsiak.parking.Soap;
 
 import com.zosiaowsiak.parking.Contracts.SchedulerInterface;
 import com.zosiaowsiak.parking.Database.ParkingLotDAO;
+import com.zosiaowsiak.parking.Database.TicketDAO;
+import com.zosiaowsiak.parking.Models.Ticket;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -35,21 +37,15 @@ public class SoapService {
         parkingLotDAO.setLotAsFree(lot);
     }
 
+    @WebMethod(action = "Ticket")
+    @WebResult(name = "greet")
+    public void Ticket(@WebParam(name="answer") Integer ticketId) {
+        TicketDAO ticketDAO = new TicketDAO();
+        Ticket ticket = ticketDAO.getTicketById(ticketId);
+        System.out.println(".................................................................");
+        System.out.println("W action Ticket");
+        System.out.println(".................................................................");
+        schedulerInterface.scheduleTicketCheck(ticket);
+    }
 
-
-//    @WebMethod(action = "Arrive")
-//    @WebResult(name = "greet")
-//    public void Arrive(@WebParam(name="answer") Integer lot){
-//        Scheduler scheduler = new Scheduler();
-//        scheduler.scheduleCheckingParkingLot(lot);
-//        DatabaseController databaseController = new DatabaseController();
-//        databaseController.setLotAsTaken(lot);
-//    }
-//
-//    @WebMethod(action = "Leave")
-//    @WebResult(name = "greet")
-//    public void Leave(@WebParam(name="answer") Integer lot){
-//        DatabaseController databaseController = new DatabaseController();
-//        databaseController.setLotAsFree(lot);
-//    }
 }

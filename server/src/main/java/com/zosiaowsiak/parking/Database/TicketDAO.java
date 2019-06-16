@@ -55,4 +55,14 @@ public class TicketDAO {
 
         return ticketsByArea;
     }
+
+    public Ticket getTicketById(Integer ticketId) {
+        List<Ticket> tickets = getAll();
+        for(Ticket ticket : tickets){
+            if(ticket.getId() == ticketId){
+                return ticket;
+            }
+        }
+        return null;
+    }
 }
