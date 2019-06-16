@@ -8,9 +8,20 @@
 <h:head><title>Dashboard</title></h:head>
 <h:body>
 
-    <h1>Super Cię widzieć #{dashboardManager.loggedName}</h1> <br/><br/><br/>
+    <h1>Super Cię widzieć #{dashboardManager.loggedName}</h1> <br/><br/>
 
-  
+    <h:form>
+        Login:<br/>
+        <h:inputText id="login" value="#{dashboardManager.newUserLogin}" required="true"/><br/>
+        Password:<br/>
+        <h:inputText id="pass" value="#{dashboardManager.newUserPass}" required="true"/><br/>
+        Zone:<br/>
+        <h:inputText id="area" value="#{dashboardManager.newUserArea}" required="true"/><br/>
+        <h:commandButton value="Dodaj nowego pracownika" type="submit" action="#{dashboardManager.addEmployee}"/>
+    </h:form>
+
+    <br/>
+    <br/>
     <h:form id="table">
 
         <h:dataTable id="table_1" value="#{dashboardManager.lots}" var="b" cellpadding="2" cellspacing="2" border="1"
