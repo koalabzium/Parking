@@ -39,23 +39,25 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
 
 
     public String getLoggedName(){
-        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
-        return principal.getName();
+//        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+//        return principal.getName();
+        return "ZOSIA";
     }
 
     public List<ParkingLot> getLots(){
+        return databaseController.getLots();
 
-        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
-        String name = principal.getName();
-        Employee employee = databaseController.getEmployeeByName(name);
-        boolean isAdmin = employee.getIsadmin();
-        System.out.println(employee.getLogin() + " JEST ADMINEM? " + isAdmin);
-        if(isAdmin){
-            return databaseController.getLots();
-        }
-        else{
-            return databaseController.getLotsByArea(employee.getArea());
-        }
+//        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+//        String name = principal.getName();
+//        Employee employee = databaseController.getEmployeeByName(name);
+//        boolean isAdmin = employee.getIsadmin();
+//        System.out.println(employee.getLogin() + " JEST ADMINEM? " + isAdmin);
+//        if(isAdmin){
+//            return databaseController.getLots();
+//        }
+//        else{
+//            return databaseController.getLotsByArea(employee.getArea());
+//        }
     }
 
     public void addEmployee(){
@@ -70,16 +72,17 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
 
 
     public List<Ticket> getActiveTickets() {
-        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
-        String name = principal.getName();
-        Employee employee = databaseController.getEmployeeByName(name);
-        boolean isAdmin = employee.getIsadmin();
-        if(isAdmin){
-            return databaseController.getAllTickets();
-        }
-        else{
-            return databaseController.getTicketsByArea(employee.getArea());
-        }
+        return databaseController.getAllTickets();
+//        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+//        String name = principal.getName();
+//        Employee employee = databaseController.getEmployeeByName(name);
+//        boolean isAdmin = employee.getIsadmin();
+//        if(isAdmin){
+//            return databaseController.getAllTickets();
+//        }
+//        else{
+//            return databaseController.getTicketsByArea(employee.getArea());
+//        }
     }
 
     public String getNewUserLogin() {
