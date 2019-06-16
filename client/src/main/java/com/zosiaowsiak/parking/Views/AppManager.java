@@ -1,25 +1,13 @@
 package com.zosiaowsiak.parking.Views;
 
-import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
-import com.zosiaowsiak.parking.Contracts.MessageStorageInterface;
-import com.zosiaowsiak.parking.Models.Employee;
-
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.jms.JMSConsumer;
 import javax.jms.JMSContext;
 import javax.jms.JMSRuntimeException;
 import javax.jms.Queue;
-import java.security.MessageDigest;
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 @ManagedBean
 @SessionScoped

@@ -1,7 +1,7 @@
-package com.zosiaowsiak.parking;
+package com.zosiaowsiak.parking.JMS;
 
 
-import com.zosiaowsiak.parking.Contracts.MessageStorage;
+import com.zosiaowsiak.parking.Contracts.AlertStorageInterface;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.EJB;
@@ -16,14 +16,14 @@ import java.util.logging.Logger;
         @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "java:/jboss/exported/jms/queue/SOA_test"),
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue")
 })
-public class MessageConsumer implements MessageListener {
+public class AlertReceiver implements MessageListener {
 
-    private static final Logger LOGGER = Logger.getLogger(MessageConsumer.class.toString());
+    private static final Logger LOGGER = Logger.getLogger(AlertReceiver.class.toString());
 
-    @EJB(lookup = "java:global/server/MessageStorageBean")
-    MessageStorage messageStorage;
+    @EJB(lookup = "java:global/server/AlertStorage")
+    AlertStorageInterface alertStorage;
 
-    public MessageConsumer() {
+    public AlertReceiver() {
     }
 
     @Override
@@ -35,7 +35,7 @@ public class MessageConsumer implements MessageListener {
                 msg = (TextMessage) rcvMessage;
                 LOGGER.info("Received Message from queue: " + msg.getText());
                 System.out.println("New message: "+ msg.getText());
-                messageStorage.addMessage(msg.getText());
+                alertStorage.addMessage(msg.getText());
 
             } else {
                 LOGGER.warning("Message of wrong type: " + rcvMessage.getClass().getName());

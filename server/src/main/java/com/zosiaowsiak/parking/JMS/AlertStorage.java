@@ -1,13 +1,11 @@
-package com.zosiaowsiak.parking;
+package com.zosiaowsiak.parking.JMS;
 
-import com.zosiaowsiak.parking.Contracts.MessageStorage;
+import com.zosiaowsiak.parking.Contracts.AlertStorageInterface;
 import com.zosiaowsiak.parking.Database.DatabaseController;
-import com.zosiaowsiak.parking.Database.ParkingLotDAO;
 import com.zosiaowsiak.parking.Models.Employee;
 import com.zosiaowsiak.parking.Models.ParkingLot;
 
 
-import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import java.util.ArrayList;
@@ -15,9 +13,9 @@ import java.util.Iterator;
 import java.util.List;
 //import java.util.stream.Collectors;
 
-@Remote(MessageStorage.class)
+@Remote(AlertStorageInterface.class)
 @Stateless
-public class MessageStorageBean implements MessageStorage {
+public class AlertStorage implements AlertStorageInterface {
 
     private List<String> messages = new ArrayList<String>();
     private DatabaseController databaseController = new DatabaseController();
@@ -32,14 +30,12 @@ public class MessageStorageBean implements MessageStorage {
         List<String> res = new ArrayList<String>();
 
         Employee employee = databaseController.getEmployeeByName(employeeLogin);
-        System.out.println("for:");
         for(String m : messages){
             ParkingLot parkingLot = databaseController.getLotById(Integer.parseInt(m));
             if(parkingLot.getArea().equals(employee.getArea())){
                 res.add(m);
             }
         }
-        System.out.println("while:");
         Iterator<String> iter = messages.iterator();
         while (iter.hasNext()) {
             String str = iter.next();

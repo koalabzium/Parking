@@ -1,4 +1,4 @@
-package com.zosiaowsiak.parking;
+package com.zosiaowsiak.parking.JMS;
 
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
@@ -8,7 +8,7 @@ import javax.jms.Queue;
 import javax.jms.TextMessage;
 
 @Stateless
-public class MDBSender {
+public class AlertSender {
 
     @Inject
     private JMSContext context;

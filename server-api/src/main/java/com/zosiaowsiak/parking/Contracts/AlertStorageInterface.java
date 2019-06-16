@@ -2,7 +2,7 @@ package com.zosiaowsiak.parking.Contracts;
 
 import java.util.List;
 
-public interface MessageStorage {
+public interface AlertStorageInterface {
 
     void addMessage(String msg);
     List<String> getMessages(String employeeLogin);

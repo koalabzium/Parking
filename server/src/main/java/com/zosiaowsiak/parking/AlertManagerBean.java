@@ -3,9 +3,9 @@ package com.zosiaowsiak.parking;
 
 
 import com.zosiaowsiak.parking.Contracts.AlertManager;
+import com.zosiaowsiak.parking.JMS.AlertSender;
 import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
-import org.hibernate.event.spi.SaveOrUpdateEvent;
 
 import javax.ejb.EJB;
 import javax.ejb.Remote;
@@ -20,7 +20,7 @@ import java.util.Timer;
 public class AlertManagerBean implements AlertManager {
 
     @EJB
-    MDBSender mdbSender;
+    AlertSender alertSender;
 
     public void scheduleTicketCheck(Ticket ticket) {
         Timer timer = new Timer();
@@ -43,6 +43,6 @@ public class AlertManagerBean implements AlertManager {
     public void alert(ParkingLot spot) {
         System.out.println("Detected unpaid parking spot!");
 
-        mdbSender.sendMessage("" + spot.getId());
+        alertSender.sendMessage("" + spot.getId());
     }
 }

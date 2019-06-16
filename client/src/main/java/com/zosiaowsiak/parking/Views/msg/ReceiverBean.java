@@ -1,61 +1,53 @@
 package com.zosiaowsiak.parking.Views.msg;
 
 import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
-import com.zosiaowsiak.parking.Contracts.MessageSenderInterface;
+import com.zosiaowsiak.parking.Contracts.AlertStorageInterface;
 import com.zosiaowsiak.parking.Models.Employee;
 
-import javax.annotation.Resource;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.inject.Inject;
-import javax.jms.JMSConsumer;
-import javax.jms.JMSContext;
-import javax.jms.JMSRuntimeException;
-import javax.jms.Queue;
 import java.security.Principal;
+import java.util.List;
 
-@ManagedBean
-@RequestScoped
+@ManagedBean(name = "notificationView")
+@SessionScoped
 public class ReceiverBean {
 
-    @Inject
-    private JMSContext context;
+    private Employee employee;
 
-    @Resource(mappedName = "java:/jboss/exported/jms/queue/SOA_test")
-    private Queue queue;
+    @EJB(lookup = "java:global/server/AlertStorage")
+    AlertStorageInterface alertStorage;
 
-    public ReceiverBean() {
-    }
+    @EJB(lookup = "java:global/server/DatabaseController")
+    DatabaseControllerInterface databaseController;
 
-    public void next(AjaxBehaviorEvent ajaxBehaviorEvent) {
-        System.out.println("Próbuje odświeżyc");
-    }
+    List<String> messages;
 
-    public void getMessage() {
-        System.out.println("w receiverze jestem");
-        try {
-            JMSConsumer receiver = context.createConsumer(queue);
-            String text = receiver.receiveBody(String.class, 1000);
-
-            if (text != null) {
-
-                FacesMessage facesMessage =
-                        new FacesMessage("Reading message: " + text);
-                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
-
-            } else {
-                FacesMessage facesMessage =
-                        new FacesMessage("No new alerts for you.");
-                FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+    @PostConstruct
+    public void init(){
+        if (employee == null) {
+            Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+            if (principal != null) {
+                employee = databaseController.getEmployeeByName(principal.getName());
             }
-        } catch (JMSRuntimeException t) {
-
-            System.out.println(t.toString());
         }
+        messages = alertStorage.getMessages(employee.getLogin());
     }
 
+    public List<String> getMessages() {
+
+        messages.addAll(alertStorage.getMessages(employee.getLogin()));
+        return messages;
+    }
+
+    public void setMessages(List<String> messages) {
+        this.messages = messages;
+    }
+
+    public String getEmployeeName(){
+        return employee.getLogin();
+    }
 }
