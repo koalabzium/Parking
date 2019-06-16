@@ -146,4 +146,28 @@ public class ParkingLotDAO {
         }
         return free;
     }
+
+    public List<ParkingLot> getAllFreeLots() {
+        List<ParkingLot> lots = getAllLots();
+        List<ParkingLot> free = new ArrayList<>();
+
+        for(ParkingLot parkingLot : lots){
+            if(!parkingLot.getIsoccupied()){
+                free.add(parkingLot);
+            }
+        }
+        return free;
+    }
+
+    public List<ParkingLot> getAllTakenLots() {
+        List<ParkingLot> lots = getAllLots();
+        List<ParkingLot> taken = new ArrayList<>();
+
+        for(ParkingLot parkingLot : lots){
+            if(parkingLot.getIsoccupied()){
+                taken.add(parkingLot);
+            }
+        }
+        return taken;
+    }
 }

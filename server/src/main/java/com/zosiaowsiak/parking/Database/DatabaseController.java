@@ -14,6 +14,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Singleton
 @Remote(DatabaseControllerInterface.class)
@@ -95,6 +96,8 @@ public class DatabaseController implements DatabaseControllerInterface {
         return employeeDAO.changePassword(employee, oldPass, newPass);
     }
 
+
+
     @Override
     public List<String> getEmployeesLogins() {
         List<Employee> employees = getEmployees();
@@ -103,6 +106,26 @@ public class DatabaseController implements DatabaseControllerInterface {
             emplLogins.add(e.getLogin());
         }
         return emplLogins;
+    }
+
+    @Override
+    public List<ParkingLot> getFreeLots() {
+        return parkingLotDAO.getAllFreeLots();
+    }
+
+    @Override
+    public List<ParkingLot> getTakenLots() {
+        return parkingLotDAO.getAllTakenLots();
+    }
+
+    @Override
+    public List<ParkingLot> getFreeLotsByArea(Integer area) {
+        return parkingLotDAO.getAllFreeLots().stream().filter(parkingLot -> parkingLot.getArea().equals(area)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ParkingLot> getTakenLotsByArea(Integer area) {
+        return parkingLotDAO.getAllTakenLots().stream().filter(parkingLot -> parkingLot.getArea().equals(area)).collect(Collectors.toList());
     }
 
 

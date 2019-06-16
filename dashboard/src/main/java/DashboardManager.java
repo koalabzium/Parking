@@ -6,6 +6,7 @@ import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -42,6 +43,34 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
         return principal.getName();
 //        return "ZOSIA";
     }
+
+    public List<ParkingLot> getFreeLots(){
+        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+        String name = principal.getName();
+        Employee employee = databaseController.getEmployeeByName(name);
+        boolean isAdmin = employee.getIsadmin();
+        System.out.println(employee.getLogin() + " JEST ADMINEM? " + isAdmin);
+        if(isAdmin){
+            return databaseController.getFreeLots();
+        }else{
+            return databaseController.getFreeLotsByArea(employee.getArea());
+        }
+
+    }
+
+    public List<ParkingLot> getTakenLots(){
+        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+        String name = principal.getName();
+        Employee employee = databaseController.getEmployeeByName(name);
+        boolean isAdmin = employee.getIsadmin();
+        System.out.println(employee.getLogin() + " JEST ADMINEM? " + isAdmin);
+        if(isAdmin){
+            return databaseController.getTakenLots();
+        }else{
+            return databaseController.getTakenLotsByArea(employee.getArea());
+        }
+    }
+
 
     public List<ParkingLot> getLots(){
 
@@ -124,6 +153,16 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
 
     public void changePassword(String employee, String oldPass, String newPass) {
         boolean result = databaseController.changePassword(employee, oldPass, newPass);
+        if(result){
+            FacesMessage facesMessage =
+                    new FacesMessage("Password has been successfully updated.");
+            FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+        }
+        else{
+            FacesMessage facesMessage =
+                    new FacesMessage("Error: you provided wrong old password.");
+            FacesContext.getCurrentInstance().addMessage(null, facesMessage);
+        }
         System.out.println("Updated password: " + result);
 
     }

@@ -9,36 +9,45 @@
 </h:head>
 <h:body>
 
-    <h1>Super Cię widzieć #{dashboardManager.loggedName}</h1> <br/><br/>
-
+    <div style="background-color: #e5c8f8; margin: auto">
+        <br/>
+        <br/>
+    <h1 style="padding-left: 30%">It's great to see you, #{dashboardManager.loggedName}!</h1> <br/><br/>
+    </div>
     <div class="row" style="display: flex;">
-        <div class="column" style="background-color:#aaa;flex: 50%; padding: 10px; height: 300px;">
-            <h:form>
-                <h:panelGroup id="choose">
+        <div class="column" style="background-color:#caf6f8;flex: 50%; height: 250px; margin-left: auto; margin-right: auto;">
+            <div style="margin: auto;">
+            <h:form style="margin-left: auto; margin-right: auto;">
+                <h:panelGroup id="choose" style="margin-left: auto; margin-right: auto;">
                     <c:choose>
                         <c:when test="#{dashboardManager.isAdmin}">
-                            <h2>Add new employee</h2>
-                            Login:<br/>
-                            <h:inputText id="login" value="#{dashboardManager.newUserLogin}" required="true"/><br/>
-                            Password:<br/>
-                            <h:inputText id="pass" value="#{dashboardManager.newUserPass}" required="true"/><br/>
-                            Zone:<br/>
-                            <h:inputText id="area" value="#{dashboardManager.newUserArea}" required="true"/><br/>
-                            <h:commandButton value="Submit" type="submit" action="#{dashboardManager.addEmployee}"/>
+                            <div style="margin: auto; padding-left: 30%">
+                                <h2>Add a new employee</h2>
+                                Login:<br/>
+                                <h:inputText id="login" value="#{dashboardManager.newUserLogin}" required="true"/><br/>
+                                Password:<br/>
+                                <h:inputText id="pass" value="#{dashboardManager.newUserPass}" required="true"/><br/>
+                                Zone:<br/>
+                                <h:inputText id="area" value="#{dashboardManager.newUserArea}" required="true"/><br/>
+                                <h:commandButton value="Submit" type="submit" action="#{dashboardManager.addEmployee}"/>
+                            </div>
                         </c:when>
-                            <h2>Don't forget to check the Employee App!</h2>
-                            <h:commandButton value="Go" type="submit" action="localhost:8080"/>
+
 
                         <c:otherwise>
-                            <br/>
+                            <div style="margin: auto; padding-left: 30%">
+                                <h2>Don't forget to check the Employee App!</h2>
+                                <h2><a href="http://localhost:8080/client/logged/receiver.xhtml">Go!</a></h2>
+                            </div>
                         </c:otherwise>
                     </c:choose>
                 </h:panelGroup>
-
             </h:form>
+            </div>
         </div>
-        <div class="column" style="background-color:#bbb;flex: 50%;  padding: 10px;  height: 300px;">
-            <h:form>
+        <div class="column" style="background-color:rgba(254,200,188,0.84);flex: 50%; margin:auto;  height: 250px;">
+            <h:form style="padding-left: 30%">
+                <h2>Update the password</h2>
                 <h:selectOneMenu binding="#{login}">
                     <f:selectItems value="#{dashboardManager.employees}"/>
                 </h:selectOneMenu><br/>
@@ -48,56 +57,85 @@
                 <h:inputText id="npass" binding="#{newPass}" required="true"/><br/>
                 <h:commandButton value="Go" type="submit" action="#{dashboardManager.changePassword(login.value, oldPass.value, newPass.value)}"/>
 
+                <div>
+                    <h:messages/>
+                </div>
+
             </h:form>
         </div><br/>
     </div>
 
 
-
-    <br/>
-    <br/>
-    <h:form id="table">
-
-        <h:dataTable id="table_1" value="#{dashboardManager.lots}" var="b" cellpadding="2" cellspacing="2" border="1"
-                     style="padding: 25px;
+    <div class="row" style="display: flex;">
+        <div class="column" style="background-color:#d4ff9b;flex: 25%; padding: 25px; height: 900px; margin-left: auto; margin-right: auto;">
+            <div style="padding-left: 20%">
+            <h:form id="table" >
+                <h2>Occupied lots:</h2>
+                <h:dataTable id="table_1" value="#{dashboardManager.takenLots}" var="b" cellpadding="2" cellspacing="2" border="1"
+                             style="padding: 25px;
                             text-align: center;
                             font-family: Arial, Verdana, sans-serif;">
 
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                #{b.id}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Area</f:facet>
-                #{b.area}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Occupied?</f:facet>
-                #{b.isoccupied}
-            </h:column>
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        #{b.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Area</f:facet>
+                        #{b.area}
+                    </h:column>
 
-        </h:dataTable>
-    </h:form>
-    <br/><br/>
+                </h:dataTable>
+            </h:form>
+            </div>
+        </div>
+        <div class="column" style="background-color:#f8f8bd;flex: 25%; padding: 25px; height: 900px; margin-left: auto; margin-right: auto;">
+            <div style="padding-left: 20%">
+                <h2>Free lots:</h2>
+            <h:form style="padding-left: 20%">
 
-    <h2>Active tickets: </h2>
-    <h:form>
-        <h:dataTable id="table_2" value="#{dashboardManager.activeTickets}" var="t"  cellpadding="2" cellspacing="2" border="0"
-                     style="padding: 25px;
+                <h:dataTable  value="#{dashboardManager.freeLots}" var="b" cellpadding="2" cellspacing="2" border="1"
+                              style="padding: 25px;
                             text-align: center;
                             font-family: Arial, Verdana, sans-serif;">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                #{t.lotId}
-            </h:column>
-            <h:column>
-                <f:facet name="header">MinutesLeft</f:facet>
-                #{t.timeLeft()}
-            </h:column>
-        </h:dataTable>
-    </h:form>
 
-    <h:graphicImage styleClass="testStyle"/>
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        #{b.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Area</f:facet>
+                        #{b.area}
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+            </div>
+        </div>
+        <div class="column" style="background-color:#ffe1b6;flex: 30%; padding: 25px; height: 900px; margin-left: auto; margin-right: auto;">
+            <div style="padding-left: 20%">
+
+                <h2>Active tickets: </h2>
+                <h:form >
+                    <h:dataTable id="table_2" value="#{dashboardManager.activeTickets}" var="t"  cellpadding="2" cellspacing="2" border="0"
+                                 style="padding: 25px;
+                            text-align: center;
+                            font-family: Arial, Verdana, sans-serif;">
+                        <h:column>
+                            <f:facet name="header">Id</f:facet>
+                            #{t.lotId}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">MinutesLeft</f:facet>
+                            #{t.timeLeft()}
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </div>
+        </div>
+    </div>
+
+
 
 </h:body>
 </html>

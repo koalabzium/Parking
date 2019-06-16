@@ -30,4 +30,11 @@ public interface DatabaseControllerInterface {
     boolean changePassword(String employee, String oldPass, String newPass);
 
     List<String> getEmployeesLogins();
+
+    List<ParkingLot> getFreeLots();
+    List<ParkingLot> getTakenLots();
+
+    List<ParkingLot> getFreeLotsByArea(Integer area);
+
+    List<ParkingLot> getTakenLotsByArea(Integer area);
 }
