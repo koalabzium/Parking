@@ -39,9 +39,9 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
 
 
     public String getLoggedName(){
-//        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
-//        return principal.getName();
-        return "ZOSIA";
+        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+        return principal.getName();
+//        return "ZOSIA";
     }
 
     public List<ParkingLot> getLots(){
