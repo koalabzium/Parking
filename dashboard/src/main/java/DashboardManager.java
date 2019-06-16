@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
@@ -107,4 +108,25 @@ być w stanie zmieniać hasła wszystkich użytkowników. Hasła nie mogą być 
         Employee employee = databaseController.getEmployeeByName(name);
         return employee.getIsadmin();
     }
+
+    public List<String> getEmployees() {
+        Principal principal = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal();
+        String name = principal.getName();
+        Employee employee = databaseController.getEmployeeByName(name);
+        if(employee.getIsadmin()){
+            return databaseController.getEmployeesLogins();
+        }else{
+            List<String> employees = new ArrayList<String>();
+            employees.add(employee.getLogin());
+            return employees;
+        }
+    }
+
+    public void changePassword(String employee, String oldPass, String newPass) {
+        boolean result = databaseController.changePassword(employee, oldPass, newPass);
+        System.out.println("Updated password: " + result);
+
+    }
+
+
 }

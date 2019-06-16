@@ -90,31 +90,20 @@ public class DatabaseController implements DatabaseControllerInterface {
         return parkingLotDAO.getLotById(id);
     }
 
-//    public static void main(String[] args) {
-//        String input = "Zosia";
-//        System.out.println(input.hashCode());
-//        StringBuffer sb = new StringBuffer();
-//
-//        try {
-//            MessageDigest md =
-//                    MessageDigest.getInstance("MD5");
-//            md.update(input.getBytes());
-//            byte[] mdbytes = md.digest();
-//
-//            //convert the byte to hex format
-//            for (int i = 0; i < mdbytes.length; i++) {
-//                sb.append(Integer.toString((mdbytes[i] & 0xff)
-//                        + 0x100, 16).substring(1));
-//            }
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//            System.exit(-1);
-//        }
-//
-//        System.out.println(sb.toString());
-//    }
+    @Override
+    public boolean changePassword(String employee, String oldPass, String newPass) {
+        return employeeDAO.changePassword(employee, oldPass, newPass);
+    }
 
-
+    @Override
+    public List<String> getEmployeesLogins() {
+        List<Employee> employees = getEmployees();
+        List<String> emplLogins = new ArrayList<>();
+        for(Employee e: employees){
+            emplLogins.add(e.getLogin());
+        }
+        return emplLogins;
+    }
 
 
     public String hashPassword(String password){

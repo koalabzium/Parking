@@ -26,4 +26,8 @@ public interface DatabaseControllerInterface {
     void tempSendMessage();
 
     ParkingLot getLotById(Integer id);
+
+    boolean changePassword(String employee, String oldPass, String newPass);
+
+    List<String> getEmployeesLogins();
 }
