@@ -4,9 +4,11 @@ import com.zosiaowsiak.parking.Contracts.DatabaseControllerInterface;
 import com.zosiaowsiak.parking.Models.Employee;
 import com.zosiaowsiak.parking.Models.ParkingLot;
 import com.zosiaowsiak.parking.Models.Ticket;
+import com.zosiaowsiak.parking.hash.Util;
 
 import javax.ejb.Remote;
 import javax.ejb.Singleton;
+import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -38,7 +40,9 @@ public class DatabaseController implements DatabaseControllerInterface {
         employee.setArea(newUserArea);
         employee.setIsadmin(false);
         employee.setLogin(newUserLogin);
-        employee.setPass(newUserPass);
+        String pass = Util.createPasswordHash("MD5", Util.BASE64_ENCODING, null,
+                null, newUserPass);
+        employee.setPass(pass);
         employeeDAO.add(employee);
     }
 
@@ -86,10 +90,37 @@ public class DatabaseController implements DatabaseControllerInterface {
         return parkingLotDAO.getLotById(id);
     }
 
+//    public static void main(String[] args) {
+//        String input = "Zosia";
+//        System.out.println(input.hashCode());
+//        StringBuffer sb = new StringBuffer();
+//
+//        try {
+//            MessageDigest md =
+//                    MessageDigest.getInstance("MD5");
+//            md.update(input.getBytes());
+//            byte[] mdbytes = md.digest();
+//
+//            //convert the byte to hex format
+//            for (int i = 0; i < mdbytes.length; i++) {
+//                sb.append(Integer.toString((mdbytes[i] & 0xff)
+//                        + 0x100, 16).substring(1));
+//            }
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//            System.exit(-1);
+//        }
+//
+//        System.out.println(sb.toString());
+//    }
+
+
+
+
     public String hashPassword(String password){
         String generatedPassword = "";
         try {
-            MessageDigest md = MessageDigest.getInstance("SHA");
+            MessageDigest md = MessageDigest.getInstance("MD5");
             md.update(password.getBytes());
             byte[] bytes = md.digest();
             StringBuilder sb = new StringBuilder();

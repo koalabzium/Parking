@@ -34,6 +34,7 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>javax.faces</groupId>
             <artifactId>javax.faces-api</artifactId>
