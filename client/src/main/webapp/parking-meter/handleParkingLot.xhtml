@@ -8,41 +8,58 @@
 <h:head><title>Take a parking space</title></h:head>
 <h:body>
     <h2>Handle parking lots</h2>
-    <h:form>
 
-        <h:form id="table">
+    <h:form id="table">
+    <div class="row" style="display: flex;">
 
-            <h:dataTable id="table_1" value="#{buyingTicketManager.takenLots}" var="b" cellpadding="2" cellspacing="2" border="1"
-                         style="padding: 25px;
+        <div class="column" style="background-color:#fec8bc;padding:5%;flex: 25%; height: 900px; margin-left: auto; margin-right: auto;">
+            <div style="padding-left: 10%">
+                <h:dataTable id="table_1" value="#{buyingTicketManager.takenLots}" var="b" cellpadding="2" cellspacing="2" border="1"
+                             style="padding: 25px;
                             text-align: center;
                             font-family: Arial, Verdana, sans-serif;">
 
-                <h:column>
-                    <f:facet name="header">Id</f:facet>
-                    #{b}
-                </h:column>
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        #{b}
+                    </h:column>
 
-                <h:column>
-                    <h:commandButton label="Leave" value="Leave" action="#{parkingLotManager.freeParkingLot(b)}"/>
-                </h:column>
-            </h:dataTable>
-            <h:dataTable id="table_2" value="#{buyingTicketManager.freeLots}" var="b" cellpadding="2" cellspacing="2" border="1"
-                         style="padding: 25px;
+                    <h:column>
+                        <h:commandButton label="Leave" value="Leave" action="#{parkingLotManager.freeParkingLot(b)}"/>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
+        <div class="column" style="background-color:#d4ff9b;flex: 25%;padding:5%; height: 900px; margin-left: auto; margin-right: auto;">
+            <div style="padding-left: 10%">
+
+                <h:dataTable id="table_2" value="#{buyingTicketManager.freeLots}" var="b" cellpadding="2" cellspacing="2" border="1"
+                             style="padding: 25px;
                             text-align: center;
                             font-family: Arial, Verdana, sans-serif;">
 
-                <h:column>
-                    <f:facet name="header">Id</f:facet>
-                    #{b}
-                </h:column>
+                    <h:column>
+                        <f:facet name="header">Id</f:facet>
+                        #{b}
+                    </h:column>
 
-                <h:column>
-                    <h:commandButton label="Arrive" value="Arrive" action="#{parkingLotManager.takeParkingLot(b)}"/>
-                </h:column>
-            </h:dataTable>
+                    <h:column>
+                        <h:commandButton label="Arrive" value="Arrive" action="#{parkingLotManager.takeParkingLot(b)}"/>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </div>
+        <div class="column" style="flex: 50%; height: 900px; margin-left: auto; margin-right: auto;">
+        </div>
+    </div>
+</h:form>
+
+
+<h:form>
+
+
         </h:form>
 
 
-   </h:form>
 </h:body>
 </html>
